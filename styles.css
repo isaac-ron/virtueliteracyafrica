@@ -1513,3 +1513,174 @@ form.contact-form {
     scroll-behavior: auto;
   }
 }
+
+/* =========================================================
+   Content blocks introduced by the 2025 Concept Note.
+   These reuse existing tokens (color, type, spacing) — no new
+   visual language; they only lay out new kinds of content.
+   ========================================================= */
+
+/* ----------- Prose bullet list (en-dash markers) ----------- */
+
+.prose-list {
+  list-style: none;
+  margin: 0 0 1.25rem;
+  padding: 0;
+  display: grid;
+  gap: 0.7rem;
+}
+
+.prose-list li {
+  position: relative;
+  padding-left: 1.6rem;
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+
+.prose-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 11px;
+  height: 1.5px;
+  background: var(--terracotta);
+}
+
+.bg-green .prose-list li { color: rgba(245, 237, 224, 0.88); }
+.bg-green .prose-list li::before { background: var(--gold); }
+
+/* ----------- Titled callout (brief's boxed asides) ----------- */
+
+.callout {
+  position: relative;
+  margin: clamp(2rem, 4vw, 3rem) 0;
+  padding: 1.6rem clamp(1.4rem, 3vw, 2.25rem);
+  background: var(--cream);
+  border-radius: var(--radius-lg);
+  border-left: 4px solid var(--terracotta);
+}
+
+.callout .eyebrow {
+  margin-bottom: 0.65rem;
+}
+
+.callout p {
+  margin: 0;
+  color: var(--ink-soft);
+}
+
+.callout p + p {
+  margin-top: 0.75rem;
+}
+
+/* ----------- Vision & Mission paired panels ----------- */
+
+.vm-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(1rem, 2.5vw, 1.75rem);
+}
+
+.vm-card {
+  padding: clamp(1.75rem, 3vw, 2.5rem);
+  border-radius: var(--radius-lg);
+  background-image: var(--paper-grain);
+  background-size: 220px 220px;
+  isolation: isolate;
+}
+
+.vm-card--vision { background-color: var(--green-deep); }
+.vm-card--mission { background-color: var(--terracotta); }
+
+.vm-card h3 {
+  color: #fff;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.vm-card p {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.1rem, 1.7vw, 1.4rem);
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.95);
+  font-variation-settings: "SOFT" 50, "WONK" 1, "opsz" 144;
+}
+
+@media (max-width: 760px) {
+  .vm-grid { grid-template-columns: 1fr; }
+}
+
+/* ----------- Implementation phases table ----------- */
+
+.table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: var(--radius);
+}
+
+.phase-table {
+  width: 100%;
+  min-width: 620px;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  background: var(--cream);
+}
+
+.phase-table thead th {
+  background: var(--green-deep);
+  color: var(--cream);
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-align: left;
+  padding: 0.95rem 1.1rem;
+}
+
+.phase-table th[scope="row"] {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 500;
+  text-align: left;
+  color: var(--terracotta);
+  white-space: nowrap;
+  font-variation-settings: "SOFT" 80, "WONK" 1, "opsz" 144;
+}
+
+.phase-table td,
+.phase-table th[scope="row"] {
+  padding: 1rem 1.1rem;
+  border-bottom: 1px dashed var(--line);
+  color: var(--ink-soft);
+  vertical-align: top;
+  line-height: 1.5;
+}
+
+.phase-table tbody tr:last-child td,
+.phase-table tbody tr:last-child th[scope="row"] {
+  border-bottom: 0;
+}
+
+/* ----------- Static contents list (non-link variant of .toc) ----------- */
+
+.toc--static .toc-item {
+  cursor: default;
+}
+
+.toc--static .toc-item:hover {
+  background: transparent;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.toc--static .toc-item:hover .toc-content h3 {
+  color: var(--ink);
+}
