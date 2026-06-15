@@ -123,4 +123,31 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </section>
 
+  <script>
+    (function () {
+      "use strict";
+      var params = new URLSearchParams(window.location.search);
+
+      var subject = params.get("subject");
+      if (subject) {
+        var sel = document.getElementById("subject");
+        if (sel && [].some.call(sel.options, function (o) { return o.value === subject; })) {
+          sel.value = subject;
+        }
+      }
+
+      var amount = params.get("amount");
+      if (amount) {
+        var frequency = params.get("frequency");
+        var funds = params.get("funds");
+        var freqWord = frequency === "monthly" ? "a monthly gift" : "a one-time gift";
+        var msg = "I'd like to make " + freqWord + " of " + amount;
+        if (funds) { msg += ", to fund " + funds.charAt(0).toLowerCase() + funds.slice(1); }
+        msg += ". Please let me know how to proceed with payment (M-Pesa or bank transfer).";
+        var ta = document.getElementById("message");
+        if (ta) { ta.value = msg; }
+      }
+    })();
+  </script>
+
 </BaseLayout>

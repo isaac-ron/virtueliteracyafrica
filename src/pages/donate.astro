@@ -1,0 +1,248 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Give — Virtue Literacy Africa"
+  description="Make a gift to Virtue Literacy Africa. Every donation is tied to a named, reportable deliverable: inclusive books, mobile-library routes, civic-education events, and AI learning fellowships in Nairobi's informal settlements."
+  currentPage="/donate"
+>
+
+  <!-- HERO -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="kicker">Give</span>
+      <h1>Fund the first right.</h1>
+      <p>Reading is where every other right starts. Every gift here is tied to a named, reportable deliverable: a set of books, a library route, an event, a fellowship seat. Choose what your money does, and we will arrange the rest with you directly.</p>
+    </div>
+  </section>
+
+  <!-- GIVING SELECTOR -->
+  <section class="give-section">
+    <div class="container">
+      <div class="give-grid">
+
+        <!-- LEFT: the giving menu -->
+        <form class="give-form" id="give-form">
+          <h2>Choose your gift.</h2>
+          <p class="give-lead">Pick an amount tied to a concrete deliverable, or enter your own. Nothing is charged on this page. Your selection reaches our team, who confirm M-Pesa or bank-transfer details and send a receipt.</p>
+
+          <div class="give-controls">
+            <fieldset class="give-field">
+              <legend class="ctl-label">Frequency</legend>
+              <div class="give-toggle">
+                <label><input type="radio" name="frequency" value="once" class="sr-only" checked /> One-time</label>
+                <label><input type="radio" name="frequency" value="monthly" class="sr-only" /> Monthly</label>
+              </div>
+            </fieldset>
+            <fieldset class="give-field">
+              <legend class="ctl-label">Currency</legend>
+              <div class="give-toggle">
+                <label><input type="radio" name="currency" value="KES" class="sr-only" checked /> KES</label>
+                <label><input type="radio" name="currency" value="USD" class="sr-only" /> USD</label>
+              </div>
+            </fieldset>
+          </div>
+
+          <fieldset class="give-field">
+            <legend class="sr-only">Choose an amount</legend>
+            <div class="give-menu">
+              <label class="give-tier">
+                <input type="radio" name="amount" value="0" class="sr-only" />
+                <span class="give-mark" aria-hidden="true"></span>
+                <span class="give-amt" data-kes="1000" data-usd="10">KSh 1,000</span>
+                <span class="give-funds">A set of inclusive picture books for one child</span>
+              </label>
+              <label class="give-tier">
+                <input type="radio" name="amount" value="1" class="sr-only" />
+                <span class="give-mark" aria-hidden="true"></span>
+                <span class="give-amt" data-kes="2500" data-usd="25">KSh 2,500</span>
+                <span class="give-funds">A class set of accessible readers</span>
+              </label>
+              <label class="give-tier">
+                <input type="radio" name="amount" value="2" class="sr-only" checked />
+                <span class="give-mark" aria-hidden="true"></span>
+                <span class="give-amt" data-kes="5000" data-usd="50">KSh 5,000</span>
+                <span class="give-funds">A mobile-library route for a day</span>
+              </label>
+              <label class="give-tier">
+                <input type="radio" name="amount" value="3" class="sr-only" />
+                <span class="give-mark" aria-hidden="true"></span>
+                <span class="give-amt" data-kes="10000" data-usd="100">KSh 10,000</span>
+                <span class="give-funds">A reading and civic-education event for a group of children</span>
+              </label>
+              <label class="give-tier">
+                <input type="radio" name="amount" value="4" class="sr-only" />
+                <span class="give-mark" aria-hidden="true"></span>
+                <span class="give-amt" data-kes="25000" data-usd="250">KSh 25,000</span>
+                <span class="give-funds">A month of an AI learning fellowship seat</span>
+              </label>
+              <label class="give-tier give-tier--custom">
+                <input type="radio" name="amount" value="custom" class="sr-only" />
+                <span class="give-mark" aria-hidden="true"></span>
+                <span class="give-amt">
+                  <span class="give-cur" aria-hidden="true">KSh</span>
+                  <input type="number" id="give-custom" class="give-custom-input" min="1" step="1" inputmode="numeric" placeholder="Other" aria-label="Custom amount" />
+                </span>
+                <span class="give-funds">Your own amount, tied to a deliverable with you</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <div class="callout" style="margin-top:1.5rem">
+            <span class="callout-label">Where your money goes</span>
+            <p>Every gift is tied to a named, reportable deliverable and accounted for in our impact reporting. Virtue Literacy Africa is an initiative of <a href="https://virtuebooks.co.ke" target="_blank" rel="noopener" style="color:var(--ink);font-weight:700;text-decoration:underline;text-decoration-color:var(--accent)">Virtue Books</a>.</p>
+          </div>
+        </form>
+
+        <!-- RIGHT: live summary -->
+        <aside class="give-summary">
+          <span class="gs-label">Your gift</span>
+          <div class="gs-readout" aria-live="polite">
+            <span class="gs-amount" id="gs-amount">KSh 5,000</span>
+            <span class="gs-freq" id="gs-freq">One-time gift</span>
+            <div class="gs-divider"></div>
+            <span class="gs-funds-label">This funds</span>
+            <p class="gs-funds" id="gs-funds">A mobile-library route for a day</p>
+          </div>
+          <a class="btn btn-accent gs-cta" id="gs-cta" href="/contact?subject=financial-sponsorship">Continue to give &rarr;</a>
+          <p class="gs-note">No payment is taken here. We confirm M-Pesa or bank-transfer details with you and send a receipt tied to this deliverable.</p>
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW GIVING WORKS -->
+  <section class="gi-section">
+    <div class="container">
+      <span class="kicker">How giving works</span>
+      <h2>Three steps, no surprises.</h2>
+      <ul class="gi-list reveal">
+        <li>
+          <span class="gi-num">1</span>
+          <div class="gi-body">
+            <h3>Choose what your gift funds</h3>
+            <p>Pick an amount above. Each one is tied to a named, reportable deliverable — books, a library route, an event, or a fellowship seat.</p>
+          </div>
+        </li>
+        <li>
+          <span class="gi-num">2</span>
+          <div class="gi-body">
+            <h3>We confirm how to pay</h3>
+            <p>Your selection reaches our team. We reply with the payment route that suits you, M-Pesa or bank transfer, usually within 3 working days.</p>
+          </div>
+        </li>
+        <li>
+          <span class="gi-num">3</span>
+          <div class="gi-body">
+            <h3>You get a receipt and a report</h3>
+            <p>Every gift is receipted, and where it went appears in our impact reporting. You see the deliverable your money paid for.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- OTHER WAYS TO GIVE -->
+  <section class="act">
+    <div class="container">
+      <h2>Other ways to give.</h2>
+      <div class="act-grid reveal">
+        <div class="act-cell">
+          <h3>Give in kind</h3>
+          <p>Books, technology, vehicles, printing, or space. In-kind gifts are credited in our annual impact report.</p>
+          <a class="go" href="/get-involved">In-kind giving &rarr;</a>
+        </div>
+        <div class="act-cell">
+          <h3>Partner or sponsor</h3>
+          <p>Foundations, corporates, and government: fund a pillar, a cohort, or a whole settlement at scale.</p>
+          <a class="go" href="/get-involved">Partnership options &rarr;</a>
+        </div>
+        <div class="act-cell">
+          <h3>See where it goes</h3>
+          <p>Read the five programme pillars your gift supports and how each one reaches children.</p>
+          <a class="go" href="/programmes">Our programmes &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    (function () {
+      "use strict";
+      var form = document.getElementById("give-form");
+      if (!form) return;
+
+      var presetAmts = [].slice.call(form.querySelectorAll(".give-amt[data-kes]"));
+      var curSym = form.querySelector(".give-cur");
+      var customInput = document.getElementById("give-custom");
+      var customRadio = form.querySelector('input[name="amount"][value="custom"]');
+      var gsAmount = document.getElementById("gs-amount");
+      var gsFreq = document.getElementById("gs-freq");
+      var gsFunds = document.getElementById("gs-funds");
+      var gsCta = document.getElementById("gs-cta");
+
+      function currency() { return form.querySelector('input[name="currency"]:checked').value; }
+      function frequency() { return form.querySelector('input[name="frequency"]:checked').value; }
+      function checkedAmount() { return form.querySelector('input[name="amount"]:checked'); }
+
+      function fmt(n, cur) {
+        n = Number(n);
+        if (!n || n < 0) return "";
+        return cur === "USD"
+          ? "$" + n.toLocaleString("en-US")
+          : "KSh " + n.toLocaleString("en-KE");
+      }
+
+      function update() {
+        var cur = currency();
+        var freq = frequency();
+
+        // Re-label preset amounts + custom currency in the active currency.
+        presetAmts.forEach(function (el) {
+          el.textContent = fmt(el.dataset[cur.toLowerCase()], cur);
+        });
+        if (curSym) curSym.textContent = cur === "USD" ? "$" : "KSh";
+
+        var sel = checkedAmount();
+        var amountLabel = "";
+        var funds = "";
+        var isCustom = sel && sel.value === "custom";
+
+        if (isCustom) {
+          amountLabel = fmt(customInput.value, cur);
+        } else if (sel) {
+          var tier = sel.closest(".give-tier");
+          amountLabel = fmt(tier.querySelector(".give-amt").dataset[cur.toLowerCase()], cur);
+          funds = tier.querySelector(".give-funds").textContent.trim();
+        }
+
+        gsAmount.textContent = amountLabel || "—";
+        gsFreq.textContent = freq === "monthly" ? "Every month" : "One-time gift";
+        gsFunds.textContent = funds || (isCustom ? "We'll tie your amount to a deliverable" : "Choose an amount to begin");
+
+        var params = new URLSearchParams({ subject: "financial-sponsorship" });
+        if (amountLabel) {
+          params.set("amount", amountLabel);
+          params.set("frequency", freq);
+          if (funds) params.set("funds", funds);
+        }
+        gsCta.href = "/contact?" + params.toString();
+      }
+
+      form.addEventListener("change", function () { update(); });
+      // Typing a custom amount selects the custom tier and focuses it.
+      customInput.addEventListener("input", function () {
+        if (!customRadio.checked) customRadio.checked = true;
+        update();
+      });
+      customInput.addEventListener("focus", function () {
+        if (!customRadio.checked) { customRadio.checked = true; update(); }
+      });
+
+      update();
+    })();
+  </script>
+
+</BaseLayout>
