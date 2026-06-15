@@ -1,5 +1,14 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import childReading from '../assets/child-reading-book.jpg';
+import kiberaAerial from '../assets/kibera-aerial.jpg';
+import books from '../assets/books.jpg';
+import mobileLibrary from '../assets/mobile-library.jpg';
+import civicEducation from '../assets/civic-education.jpg';
+import fellowship from '../assets/fellowship.jpg';
+import kenyanTeacher from '../assets/kenyan-teacher.jpg';
+import childrenHappy from '../assets/children-happy.jpg';
 ---
 
 <BaseLayout
@@ -23,10 +32,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </div>
       </div>
       <figure class="hero-fig">
-        <img
-          src="/src/images/child-reading-book.jpg"
+        <Image
+          src={childReading}
           alt="A child reading a book"
-          onerror="this.style.display='none'"
+          width={900}
+          format="webp"
+          quality={72}
+          loading="eager"
+          fetchpriority="high"
         />
         <figcaption>A reader in Nairobi</figcaption>
       </figure>
@@ -35,10 +48,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   <!-- 2 · DOCUMENTARY PHOTO -->
   <figure class="testimony">
-    <img
-      src="/src/images/KiberaAerialView (Dant3 - Pexels).jpg"
+    <Image
+      src={kiberaAerial}
       alt="Kibera settlement, Nairobi"
-      onerror="this.style.height='0'"
+      width={1600}
+      format="webp"
+      quality={72}
     />
     <figcaption>Kibera, Nairobi. Phase 1 begins in the settlements where Virtue Books first documented life on the ground.</figcaption>
   </figure>
@@ -73,7 +88,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <div class="pillar-index reveal">
         <article class="pcell feature">
           <div class="ph">
-            <img src="/src/images/books.jpg" alt="Shelves of children's books" onerror="this.style.display='none'" />
+            <Image src={books} alt="Shelves of children's books" width={700} format="webp" quality={72} />
             <span class="pn">01</span>
           </div>
           <div class="pbody">
@@ -83,7 +98,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </article>
         <article class="pcell">
           <div class="ph">
-            <img src="/src/images/mobile-library.jpg" alt="A child reading an open book" onerror="this.style.display='none'" />
+            <Image src={mobileLibrary} alt="A child reading an open book" width={700} format="webp" quality={72} />
             <span class="pn">02</span>
           </div>
           <div class="pbody">
@@ -93,7 +108,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </article>
         <article class="pcell">
           <div class="ph">
-            <img src="/src/images/civic-education.jpg" alt="Young people together outdoors" onerror="this.style.display='none'" />
+            <Image src={civicEducation} alt="Young people together outdoors" width={700} format="webp" quality={72} />
             <span class="pn">03</span>
           </div>
           <div class="pbody">
@@ -103,7 +118,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </article>
         <article class="pcell">
           <div class="ph">
-            <img src="/src/images/fellowship.jpg" alt="A child concentrating on a book" onerror="this.style.display='none'" />
+            <Image src={fellowship} alt="A child concentrating on a book" width={700} format="webp" quality={72} />
             <span class="pn">04</span>
           </div>
           <div class="pbody">
@@ -113,7 +128,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </article>
         <article class="pcell">
           <div class="ph">
-            <img src="/src/images/kenyan-teacher.jpg" alt="Children learning together" onerror="this.style.display='none'" />
+            <Image src={kenyanTeacher} alt="Children learning together" width={700} format="webp" quality={72} />
             <span class="pn">05</span>
           </div>
           <div class="pbody">
@@ -193,10 +208,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </div>
       </div>
       <figure class="close-fig reveal">
-        <img
-          src="/src/images/children-happy.jpg"
+        <Image
+          src={childrenHappy}
           alt="Children learning together"
-          onerror="this.style.display='none'"
+          width={900}
+          format="webp"
+          quality={72}
         />
       </figure>
     </div>
