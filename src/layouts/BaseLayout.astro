@@ -1,0 +1,141 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  currentPage?: string;
+}
+
+const {
+  title,
+  description = 'Virtue Literacy Africa, an initiative of Virtue Books, puts mobile libraries, books, and a civic voice into Nairobi\'s informal settlements.',
+  currentPage = '',
+} = Astro.props;
+
+const nav = [
+  { href: '/about', label: 'Our Story' },
+  { href: '/programmes', label: 'Programmes' },
+  { href: '/get-involved', label: 'Get Involved' },
+  { href: '/contact', label: 'Contact' },
+];
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="icon" type="image/png" href="/vla-logo.png" />
+  <script is:inline>document.documentElement.classList.add('js');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;800;900&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="nav" aria-label="Primary">
+      <a href="/" class="brand" aria-label="Virtue Literacy Africa home">
+        <b>Virtue Literacy Africa</b>
+        <small>An initiative of Virtue Books</small>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-menu" id="nav-menu">
+        <div class="nav-links">
+          {nav.map(({ href, label }) => (
+            <a href={href} aria-current={currentPage === href ? 'page' : undefined}>{label}</a>
+          ))}
+        </div>
+        <a href="/get-involved" class="donate-block">Donate</a>
+        <a href="/get-involved" class="donate-m">Donate</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <slot />
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <b>Virtue Literacy Africa</b>
+          <a href="https://virtuebooks.co.ke" class="parent" target="_blank" rel="noopener">An initiative of Virtue Books</a>
+          <p>Reading, writing, storytelling, civic education, and rising — for children in Africa's informal settlements.</p>
+        </div>
+        <div>
+          <h4>Explore</h4>
+          <ul>
+            <li><a href="/about">Our Story</a></li>
+            <li><a href="/programmes">Programmes</a></li>
+            <li><a href="/get-involved">Get Involved</a></li>
+            <li><a href="/contact">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Programmes</h4>
+          <ul>
+            <li><a href="/programmes#publishing">Documentation &amp; Publishing</a></li>
+            <li><a href="/programmes#libraries">Mobile Libraries</a></li>
+            <li><a href="/programmes#events">Events &amp; Civic Education</a></li>
+            <li><a href="/programmes#fellowships">AI Learning Fellowships</a></li>
+            <li><a href="/programmes#inclusion">Inclusive Dev &amp; Mwangaza AI</a></li>
+          </ul>
+        </div>
+        <div class="newsletter">
+          <h4>Stay in touch</h4>
+          <p>Occasional updates on our work. No spam.</p>
+          <form onsubmit="event.preventDefault(); this.reset(); this.querySelector('input').placeholder='Subscribed. Thank you.';">
+            <label class="sr-only" for="nl">Email address</label>
+            <input id="nl" type="email" required placeholder="you@example.org" />
+            <button type="submit">Join</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Virtue Literacy Africa. An initiative of Virtue Books.</span>
+        <span>Nairobi, Kenya &middot; <a href="mailto:virtue.book@africa.org" style="color:inherit">virtue.book@africa.org</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      "use strict";
+      var toggle = document.querySelector(".nav-toggle");
+      var menu = document.getElementById("nav-menu");
+      if (toggle && menu) {
+        toggle.addEventListener("click", function () {
+          var open = toggle.getAttribute("aria-expanded") === "true";
+          toggle.setAttribute("aria-expanded", String(!open));
+          menu.classList.toggle("open", !open);
+        });
+        menu.querySelectorAll("a").forEach(function (a) {
+          a.addEventListener("click", function () {
+            toggle.setAttribute("aria-expanded", "false");
+            menu.classList.remove("open");
+          });
+        });
+      }
+      var reveals = document.querySelectorAll(".reveal");
+      if ("IntersectionObserver" in window && reveals.length) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+          });
+        }, { threshold: 0.1, rootMargin: "0px 0px -40px 0px" });
+        reveals.forEach(function (el) { io.observe(el); });
+      } else {
+        reveals.forEach(function (el) { el.classList.add("in"); });
+      }
+    })();
+  </script>
+
+</body>
+</html>
