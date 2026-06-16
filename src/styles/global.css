@@ -159,7 +159,8 @@ h1, h2, h3 { margin: 0; font-weight: 900; line-height: 0.98; letter-spacing: -0.
 .nav-toggle span { width: 22px; height: 2.5px; background: var(--ink); }
 
 @media (max-width: 880px) {
-  .nav-links, .donate-block { display: none; }
+  .donate-block { display: none; }
+  .nav-links { display: contents; }
   .nav-toggle { display: flex; }
   .nav-menu {
     position: absolute;
