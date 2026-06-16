@@ -9,13 +9,14 @@ interface Props {
 
 const {
   title,
-  description = 'Virtue Literacy Africa, an initiative of Virtue Books, puts mobile libraries, books, and a civic voice into Nairobi\'s informal settlements.',
+  description = 'Virtue Literacy Africa empowers children in Africa\'s informal settlements — from mobile libraries, books, and civic education on the ground to rigorous research at the policy table.',
   currentPage = '',
 } = Astro.props;
 
 const nav = [
   { href: '/about', label: 'Our Story' },
   { href: '/programmes', label: 'Programmes' },
+  { href: '/apgd', label: 'APGD' },
   { href: '/get-involved', label: 'Get Involved' },
   { href: '/contact', label: 'Contact' },
 ];
@@ -36,11 +37,22 @@ const nav = [
 </head>
 <body>
 
+  {currentPage === '/' && (
+    <aside class="jbanner" id="jbanner" aria-label="Journal announcement">
+      <div class="jbanner-inner">
+        <span class="jbanner-tag">New</span>
+        <p>Introducing <strong>African Perspectives on Governance and Development</strong> (APGD) &mdash; our new peer-reviewed, open-access journal.</p>
+        <a href="/apgd" class="jbanner-link">Explore the journal &rarr;</a>
+        <button type="button" class="jbanner-close" id="jbanner-close" aria-label="Dismiss announcement">&times;</button>
+      </div>
+    </aside>
+  )}
+
   <header class="site-header">
     <nav class="nav" aria-label="Primary">
       <a href="/" class="brand" aria-label="Virtue Literacy Africa home">
         <b>Virtue Literacy Africa</b>
-        <small>An initiative of Virtue Books</small>
+        <small>Reading &middot; Civic education &middot; Rising</small>
       </a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle menu">
         <span></span><span></span><span></span>
@@ -66,14 +78,14 @@ const nav = [
       <div class="footer-top">
         <div class="footer-brand">
           <b>Virtue Literacy Africa</b>
-          <a href="https://virtuebooks.co.ke" class="parent" target="_blank" rel="noopener">An initiative of Virtue Books</a>
-          <p>Reading, writing, storytelling, civic education, and rising — for children in Africa's informal settlements.</p>
+          <p>Documenting Africa's informal settlements and responding with mobile libraries, literacy events, civic education, values-based books, AI learning fellowships, and rigorous academic research &mdash; from the community to the policy table.</p>
         </div>
         <div>
           <h4>Explore</h4>
           <ul>
             <li><a href="/about">Our Story</a></li>
             <li><a href="/programmes">Programmes</a></li>
+            <li><a href="/apgd">APGD</a></li>
             <li><a href="/get-involved">Get Involved</a></li>
             <li><a href="/contact">Contact</a></li>
           </ul>
@@ -86,6 +98,7 @@ const nav = [
             <li><a href="/programmes#events">Events &amp; Civic Education</a></li>
             <li><a href="/programmes#fellowships">AI Learning Fellowships</a></li>
             <li><a href="/programmes#inclusion">Inclusive Dev &amp; Mwangaza AI</a></li>
+            <li><a href="/apgd">APGD &mdash; African Perspectives on Governance &amp; Development</a></li>
           </ul>
         </div>
         <div class="newsletter">
@@ -99,8 +112,8 @@ const nav = [
         </div>
       </div>
       <div class="footer-bottom">
-        <span>© 2026 Virtue Literacy Africa. An initiative of Virtue Books.</span>
-        <span>Nairobi, Kenya &middot; <a href="mailto:virtue.book@africa.org" style="color:inherit">virtue.book@africa.org</a></span>
+        <span>© 2026 Virtue Literacy Africa. All rights reserved. Reading, writing, storytelling, civic education &amp; rising.</span>
+        <span>Nairobi, Kenya &middot; <a href="mailto:info@virtueliteracyafrica.org" style="color:inherit">info@virtueliteracyafrica.org</a></span>
       </div>
     </div>
   </footer>
@@ -121,6 +134,15 @@ const nav = [
             toggle.setAttribute("aria-expanded", "false");
             menu.classList.remove("open");
           });
+        });
+      }
+      var jb = document.getElementById("jbanner");
+      var jbc = document.getElementById("jbanner-close");
+      if (jb && jbc) {
+        try { if (localStorage.getItem("apgd-banner-dismissed") === "1") jb.hidden = true; } catch (e) {}
+        jbc.addEventListener("click", function () {
+          jb.hidden = true;
+          try { localStorage.setItem("apgd-banner-dismissed", "1"); } catch (e) {}
         });
       }
       var reveals = document.querySelectorAll(".reveal");
