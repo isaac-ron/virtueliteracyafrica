@@ -1,10 +1,13 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { reader } from '../lib/content';
+
+const journal = (await reader.singletons.journal.read())!;
 ---
 
 <BaseLayout
   title="Programmes — Virtue Literacy Africa"
-  description="VLA's six programme pillars: documentation and publishing, mobile libraries, civic education events, AI learning fellowships, inclusive development with Mwangaza AI, and the African Journal of Governance, AI and Development."
+  description={`VLA's six programme pillars: documentation and publishing, mobile libraries, civic education events, AI learning fellowships, inclusive development with Mwangaza AI, and the ${journal.name}.`}
   currentPage="/programmes"
 >
 
@@ -13,7 +16,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <div class="container">
       <span class="kicker">Programmes</span>
       <h1>Six pillars. One ecosystem.</h1>
-      <p>Our six pillars form an ecosystem that moves from documentation to delivery, from enrichment to empowerment, and from the community to the policy table. At the grassroots, we reach children directly. Through the AJGAD, we reach the thinking and the systems that shape their world.</p>
+      <p>Our six pillars form an ecosystem that moves from documentation to delivery, from enrichment to empowerment, and from the community to the policy table. At the grassroots, we reach children directly. Through the {journal.acronym}, we reach the thinking and the systems that shape their world.</p>
     </div>
   </section>
 
@@ -181,18 +184,18 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </section>
 
   <!-- PILLAR 6 — AJGAD -->
-  <section class="pillar-section pillar-section--journal" id="AJGAD">
+  <section class="pillar-section pillar-section--journal" id="ajgad">
     <div class="container">
       <div class="ps-head reveal">
         <span class="ps-num">06</span>
-        <h2>African Journal of Governance, AI and Development</h2>
+        <h2>{journal.name}</h2>
       </div>
       <p class="ps-intro reveal">The work of reaching children in informal settlements generates something beyond impact on the ground. It generates evidence &mdash; about what communities need, about what works, and about the gap between the policies designed to serve people and the lives those people are actually living. That evidence deserves a rigorous, credible, internationally visible platform.</p>
 
       <div class="ps-grid reveal">
         <div>
           <h3>The scholarly voice of our work</h3>
-          <p style="color:var(--ink-soft);line-height:1.7">The African Journal of Governance, AI and Development (AJGAD) is a peer-reviewed, open-access journal published biannually &mdash; a home for evidence-based research on governance, development, and social innovation across Africa, written by and for the researchers, practitioners, policymakers, and scholars shaping the continent's future.</p>
+          <p style="color:var(--ink-soft);line-height:1.7">The {journal.name} ({journal.acronym}) is a peer-reviewed, open-access journal published biannually &mdash; a home for evidence-based research on governance, development, and social innovation across Africa, written by and for the researchers, practitioners, policymakers, and scholars shaping the continent's future.</p>
           <p style="color:var(--ink-soft);line-height:1.7;margin-top:1rem">It carries the same conviction that drives everything else we do: that the gap between Africa's potential and Africa's reality is not fixed &mdash; and that knowledge, honestly gathered and rigorously shared, is one of the most powerful tools we have to close it.</p>
         </div>
         <div>
@@ -208,8 +211,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
 
       <div class="pillar-actions reveal">
-        <a href="/AJGAD" class="btn btn-coral">Visit the journal &rarr;</a>
-        <a href="/get-involved" class="btn">Partner with the AJGAD</a>
+        <a href="/ajgad" class="btn btn-coral">Visit the journal &rarr;</a>
+        <a href="/get-involved" class="btn">Partner with the {journal.acronym}</a>
       </div>
     </div>
   </section>

@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { reader, img } from '../../lib/content';
+import { DocumentRenderer } from '@keystatic/core/renderer';
+
+export async function getStaticPaths() {
+  const posts = await reader.collections.posts.all();
+  return posts.map((p) => ({ params: { slug: p.slug } }));
+}
+
+const { slug } = Astro.params;
+const post = (await reader.collections.posts.read(slug as string, { resolveLinkedFiles: true }))!;
+const raw: any = post.content;
+const doc = typeof raw === 'function' ? await raw() : raw;
+
+function fmtDate(d: string | null) {
+  if (!d) return '';
+  return new Date(d).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+}
+---
+
+<BaseLayout
+  title={`${post.title} — Virtue Literacy Africa`}
+  description={post.excerpt || post.title}
+  currentPage="/blog"
+>
+  <article class="post">
+    <section class="page-hero">
+      <div class="container">
+        <span class="kicker"><a href="/blog" style="color:var(--accent)">Blog</a></span>
+        <h1>{post.title}</h1>
+        <p class="post-byline">{fmtDate(post.publishedDate)}{post.author ? ` · ${post.author}` : ''}</p>
+      </div>
+    </section>
+
+    {post.coverImage && (
+      <figure class="post-cover">
+        <img src={img(post.coverImage, '/images/blog/')} alt="" />
+      </figure>
+    )}
+
+    <section class="post-body-section">
+      <div class="container">
+        <div class="prose">
+          <DocumentRenderer document={doc} />
+        </div>
+        <p style="margin-top:clamp(2rem,4vw,3rem)"><a href="/blog" class="btn">&larr; All posts</a></p>
+      </div>
+    </section>
+  </article>
+</BaseLayout>

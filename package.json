@@ -5,9 +5,16 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "cms": "cross-env ENABLE_KEYSTATIC=true astro dev"
   },
   "dependencies": {
-    "astro": "^5.0.0"
+    "@astrojs/react": "^5.0.7",
+    "@keystatic/astro": "^5.1.0",
+    "@keystatic/core": "^0.5.50",
+    "astro": "^5.0.0",
+    "cross-env": "^10.1.0",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
   }
 }

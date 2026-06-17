@@ -1,0 +1,53 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { reader, img } from '../../lib/content';
+
+const posts = (await reader.collections.posts.all()).sort((a, b) =>
+  (a.entry.publishedDate ?? '') < (b.entry.publishedDate ?? '') ? 1 : -1
+);
+
+function fmtDate(d: string | null) {
+  if (!d) return '';
+  return new Date(d).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+}
+---
+
+<BaseLayout
+  title="Blog &amp; News — Virtue Literacy Africa"
+  description="Field notes, programme updates, and stories from Virtue Literacy Africa's work across Africa's informal settlements."
+  currentPage="/blog"
+>
+  <section class="page-hero">
+    <div class="container">
+      <span class="kicker">Blog &amp; News</span>
+      <h1>From the ground up.</h1>
+      <p>Field notes, programme updates, and stories from our work across Africa's informal settlements.</p>
+    </div>
+  </section>
+
+  <section class="gi-section">
+    <div class="container">
+      {posts.length === 0 ? (
+        <p style="color:var(--ink-soft)">No posts yet — check back soon.</p>
+      ) : (
+        <ul class="post-index">
+          {posts.map((p) => (
+            <li class="post-row">
+              <a class="post-link" href={`/blog/${p.slug}`}>
+                {p.entry.coverImage && (
+                  <span class="post-thumb"><img src={img(p.entry.coverImage, '/images/blog/')} alt="" loading="lazy" /></span>
+                )}
+                <span class="post-body">
+                  <span class="post-meta">{fmtDate(p.entry.publishedDate)}{p.entry.author ? ` · ${p.entry.author}` : ''}</span>
+                  <span class="post-title">{p.entry.title}</span>
+                  {p.entry.excerpt && <span class="post-excerpt">{p.entry.excerpt}</span>}
+                  <span class="post-go">Read &rarr;</span>
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  </section>
+</BaseLayout>

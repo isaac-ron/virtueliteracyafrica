@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { reader } from '../lib/content';
 
 interface Props {
   title: string;
@@ -13,10 +14,14 @@ const {
   currentPage = '',
 } = Astro.props;
 
+const journal = (await reader.singletons.journal.read())!;
+const banner = (await reader.singletons.banner.read())!;
+
 const nav = [
   { href: '/about', label: 'Our Story' },
   { href: '/programmes', label: 'Programmes' },
-  { href: '/AJGAD', label: 'AJGAD' },
+  { href: '/ajgad', label: journal.acronym },
+  { href: '/blog', label: 'Blog' },
   { href: '/get-involved', label: 'Get Involved' },
   { href: '/contact', label: 'Contact' },
 ];
@@ -37,12 +42,12 @@ const nav = [
 </head>
 <body>
 
-  {currentPage === '/' && (
+  {currentPage === '/' && banner.show && (
     <aside class="jbanner" id="jbanner" aria-label="Journal announcement">
       <div class="jbanner-inner">
-        <span class="jbanner-tag">New</span>
-        <p>Introducing <strong>African Journal of Governance, AI and Development</strong> (AJGAD) &mdash; our new peer-reviewed, open-access journal.</p>
-        <a href="/AJGAD" class="jbanner-link">Explore the journal &rarr;</a>
+        <span class="jbanner-tag">{banner.tag}</span>
+        <p>{banner.leadIn} <strong>{journal.name}</strong> ({journal.acronym}) {banner.tail}</p>
+        <a href="/ajgad" class="jbanner-link">{banner.ctaLabel}</a>
         <button type="button" class="jbanner-close" id="jbanner-close" aria-label="Dismiss announcement">&times;</button>
       </div>
     </aside>
@@ -85,7 +90,11 @@ const nav = [
           <ul>
             <li><a href="/about">Our Story</a></li>
             <li><a href="/programmes">Programmes</a></li>
-            <li><a href="/AJGAD">AJGAD</a></li>
+            <li><a href="/ajgad">{journal.acronym}</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/team">Team</a></li>
+            <li><a href="/events">Events</a></li>
+            <li><a href="/gallery">Gallery</a></li>
             <li><a href="/get-involved">Get Involved</a></li>
             <li><a href="/contact">Contact</a></li>
           </ul>
@@ -98,7 +107,7 @@ const nav = [
             <li><a href="/programmes#events">Events &amp; Civic Education</a></li>
             <li><a href="/programmes#fellowships">AI Learning Fellowships</a></li>
             <li><a href="/programmes#inclusion">Inclusive Dev &amp; Mwangaza AI</a></li>
-            <li><a href="/AJGAD">AJGAD &mdash; African Perspectives on Governance &amp; Development</a></li>
+            <li><a href="/ajgad">{journal.acronym} &mdash; {journal.name}</a></li>
           </ul>
         </div>
         <div class="newsletter">

@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { reader, img } from '../lib/content';
+
+const events = (await reader.collections.events.all()).sort((a, b) =>
+  (a.entry.date ?? '') < (b.entry.date ?? '') ? -1 : 1
+);
+
+function fmtDate(d: string | null) {
+  if (!d) return '';
+  return new Date(d).toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'long', year: 'numeric' });
+}
+---
+
+<BaseLayout
+  title="Events — Virtue Literacy Africa"
+  description="Reading days, civic education events, fellowship showcases, and journal milestones."
+  currentPage="/events"
+>
+  <section class="page-hero">
+    <div class="container">
+      <span class="kicker">Events</span>
+      <h1>Where the work happens.</h1>
+      <p>Reading days, storytelling circles, civic education events, fellowship showcases, and journal milestones.</p>
+    </div>
+  </section>
+
+  <section class="events-section">
+    <div class="container">
+      {events.length === 0 ? (
+        <p style="color:var(--ink-soft)">No events scheduled right now — check back soon.</p>
+      ) : (
+        <ul class="event-list">
+          {events.map((e) => (
+            <li class="event-row">
+              {e.entry.image && (
+                <span class="event-thumb"><img src={img(e.entry.image, '/images/events/')} alt="" loading="lazy" /></span>
+              )}
+              <span class="event-body">
+                <span class="event-date">{fmtDate(e.entry.date)}</span>
+                <h2 class="event-title">{e.entry.title}</h2>
+                {e.entry.location && <span class="event-loc">{e.entry.location}</span>}
+                {e.entry.description && <p class="event-desc">{e.entry.description}</p>}
+              </span>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  </section>
+</BaseLayout>

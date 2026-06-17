@@ -1,5 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { reader } from '../lib/content';
+
+const journal = (await reader.singletons.journal.read())!;
 ---
 
 <BaseLayout
@@ -53,8 +56,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
               <option value="media-communications">Media &amp; Communications</option>
               <option value="institutional-partnership">Institutional Partnership</option>
               <option value="governance-partnership">Governance &amp; Democracy Sector Partnership</option>
-              <option value="AJGAD-submission">AJGAD &mdash; Journal Submission</option>
-              <option value="AJGAD-partnership">AJGAD &mdash; Journal Partnership</option>
+              <option value="ajgad-submission">{journal.acronym} &mdash; Journal Submission</option>
+              <option value="ajgad-partnership">{journal.acronym} &mdash; Journal Partnership</option>
               <option value="other">Something else</option>
             </select>
           </div>
@@ -87,7 +90,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </div>
           <div class="lc-row">
             <strong>Journal</strong>
-            <span><a href="/AJGAD">AJGAD</a></span>
+            <span><a href="/ajgad">{journal.acronym}</a></span>
           </div>
         </div>
 

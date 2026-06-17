@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { reader, img } from '../lib/content';
+
+const team = (await reader.collections.team.all()).sort(
+  (a, b) => (a.entry.order ?? 0) - (b.entry.order ?? 0)
+);
+---
+
+<BaseLayout
+  title="Team — Virtue Literacy Africa"
+  description="The people behind Virtue Literacy Africa's work across Africa's informal settlements."
+  currentPage="/team"
+>
+  <section class="page-hero">
+    <div class="container">
+      <span class="kicker">Our Team</span>
+      <h1>The people behind the work.</h1>
+      <p>A small team working across documentation, mobile libraries, civic education, fellowships, and the journal.</p>
+    </div>
+  </section>
+
+  <section class="team-section">
+    <div class="container">
+      {team.length === 0 ? (
+        <p style="color:var(--ink-soft)">Team profiles are on the way.</p>
+      ) : (
+        <ul class="team-grid">
+          {team.map((m) => (
+            <li class="team-card">
+              <div class="team-photo">
+                {m.entry.photo ? <img src={img(m.entry.photo, '/images/team/')} alt={m.entry.name} loading="lazy" /> : <span class="team-photo-ph" aria-hidden="true"></span>}
+              </div>
+              <div class="team-meta">
+                <h2>{m.entry.name}</h2>
+                <p class="team-role">{m.entry.role}</p>
+                {m.entry.bio && <p class="team-bio">{m.entry.bio}</p>}
+              </div>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  </section>
+</BaseLayout>
