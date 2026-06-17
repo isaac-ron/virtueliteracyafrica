@@ -1,4 +1,5 @@
 import { config, fields, singleton, collection } from '@keystatic/core';
+import { createElement } from 'react';
 
 // Editing surface = structured content the client can safely manage:
 // two small singletons (journal name, homepage banner) plus four collections
@@ -7,7 +8,16 @@ import { config, fields, singleton, collection } from '@keystatic/core';
 export default config({
   storage: { kind: 'local' },
   ui: {
-    brand: { name: 'Virtue Literacy Africa' },
+    brand: {
+      name: 'Virtue Literacy Africa',
+      // Logo shown in the admin sidebar — the one branding lever Keystatic supports.
+      mark: () =>
+        createElement('img', {
+          src: '/vla-logo.png',
+          alt: 'Virtue Literacy Africa',
+          style: { height: '24px', width: 'auto', objectFit: 'contain' },
+        }),
+    },
     navigation: {
       Site: ['journal', 'banner'],
       Content: ['posts', 'team', 'events', 'gallery'],
