@@ -688,7 +688,7 @@ h1, h2, h3 { margin: 0; font-weight: 900; line-height: 0.98; letter-spacing: -0.
   .give-mark { grid-row: span 2; align-self: center; }
 }
 
-/* ---------- APGD bridge pillar (homepage, sixth pillar) ---------- */
+/* ---------- AJGAD bridge pillar (homepage, sixth pillar) ---------- */
 .pillar-bridge {
   border: 2px solid var(--ink);
   border-top: 0;
@@ -725,7 +725,7 @@ h1, h2, h3 { margin: 0; font-weight: 900; line-height: 0.98; letter-spacing: -0.
 .pillar-section--journal .pb-marker { color: var(--coral); }
 .pillar-actions { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: clamp(1.5rem, 3vw, 2.25rem); }
 
-/* ---------- APGD page (journal hero + indexes) ---------- */
+/* ---------- AJGAD page (journal hero + indexes) ---------- */
 .page-hero--journal { border-bottom-color: var(--coral); }
 .page-hero--journal .kicker { color: var(--coral); }
 .journal-meta { font-size: 0.82rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--on-ink-soft); margin-top: 1.25rem; }

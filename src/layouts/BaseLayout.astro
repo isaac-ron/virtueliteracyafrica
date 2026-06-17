@@ -16,7 +16,7 @@ const {
 const nav = [
   { href: '/about', label: 'Our Story' },
   { href: '/programmes', label: 'Programmes' },
-  { href: '/apgd', label: 'APGD' },
+  { href: '/AJGAD', label: 'AJGAD' },
   { href: '/get-involved', label: 'Get Involved' },
   { href: '/contact', label: 'Contact' },
 ];
@@ -41,8 +41,8 @@ const nav = [
     <aside class="jbanner" id="jbanner" aria-label="Journal announcement">
       <div class="jbanner-inner">
         <span class="jbanner-tag">New</span>
-        <p>Introducing <strong>African Perspectives on Governance and Development</strong> (APGD) &mdash; our new peer-reviewed, open-access journal.</p>
-        <a href="/apgd" class="jbanner-link">Explore the journal &rarr;</a>
+        <p>Introducing <strong>African Journal of Governance, AI and Development</strong> (AJGAD) &mdash; our new peer-reviewed, open-access journal.</p>
+        <a href="/AJGAD" class="jbanner-link">Explore the journal &rarr;</a>
         <button type="button" class="jbanner-close" id="jbanner-close" aria-label="Dismiss announcement">&times;</button>
       </div>
     </aside>
@@ -85,7 +85,7 @@ const nav = [
           <ul>
             <li><a href="/about">Our Story</a></li>
             <li><a href="/programmes">Programmes</a></li>
-            <li><a href="/apgd">APGD</a></li>
+            <li><a href="/AJGAD">AJGAD</a></li>
             <li><a href="/get-involved">Get Involved</a></li>
             <li><a href="/contact">Contact</a></li>
           </ul>
@@ -98,7 +98,7 @@ const nav = [
             <li><a href="/programmes#events">Events &amp; Civic Education</a></li>
             <li><a href="/programmes#fellowships">AI Learning Fellowships</a></li>
             <li><a href="/programmes#inclusion">Inclusive Dev &amp; Mwangaza AI</a></li>
-            <li><a href="/apgd">APGD &mdash; African Perspectives on Governance &amp; Development</a></li>
+            <li><a href="/AJGAD">AJGAD &mdash; African Perspectives on Governance &amp; Development</a></li>
           </ul>
         </div>
         <div class="newsletter">
@@ -139,10 +139,10 @@ const nav = [
       var jb = document.getElementById("jbanner");
       var jbc = document.getElementById("jbanner-close");
       if (jb && jbc) {
-        try { if (localStorage.getItem("apgd-banner-dismissed") === "1") jb.hidden = true; } catch (e) {}
+        try { if (localStorage.getItem("AJGAD-banner-dismissed") === "1") jb.hidden = true; } catch (e) {}
         jbc.addEventListener("click", function () {
           jb.hidden = true;
-          try { localStorage.setItem("apgd-banner-dismissed", "1"); } catch (e) {}
+          try { localStorage.setItem("AJGAD-banner-dismissed", "1"); } catch (e) {}
         });
       }
       var reveals = document.querySelectorAll(".reveal");
