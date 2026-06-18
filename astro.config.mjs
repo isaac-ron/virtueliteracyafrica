@@ -1,15 +1,12 @@
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import keystatic from '@keystatic/astro';
+import cloudflare from '@astrojs/cloudflare';
 
-// The Keystatic editor (/keystatic) runs as on-demand routes, so it's only
-// enabled when ENABLE_KEYSTATIC=true (the `npm run cms` script). The normal
-// `npm run build` stays 100% static — no adapter — so the Cloudflare Pages
-// deploy is unchanged.
-const enableAdmin = process.env.ENABLE_KEYSTATIC === 'true';
-
+// Content pages are prerendered to static HTML (read from content/ at build time).
+// The Keystatic editor (/keystatic) and its API run on-demand as Cloudflare
+// Pages Functions via the adapter, so the live admin works with Keystatic Cloud.
 export default defineConfig({
-  // Static output — served directly from Cloudflare Pages' dist/
-  // Pages read their copy from content/ via the Keystatic reader at build time.
-  integrations: [react(), ...(enableAdmin ? [keystatic()] : [])],
+  integrations: [react(), keystatic()],
+  adapter: cloudflare(),
 });

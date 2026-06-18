@@ -2,8 +2,10 @@
 
 The site's copy lives in editable content files under `content/`, read at build time
 by `src/lib/content.ts`. A visual editor (Keystatic) sits on top so non-developers can
-change wording without touching code. **The production build stays 100% static** — the
-editor is a separate dev/server concern, so the Cloudflare Pages deploy is unaffected.
+change content without touching code. **Content pages are prerendered to static HTML**;
+only the `/keystatic` editor and its API run on-demand as Cloudflare Pages Functions (via
+the `@astrojs/cloudflare` adapter). In production the editor is backed by **Keystatic
+Cloud**, so the founder and copywriter can edit the live site without GitHub accounts.
 
 ## Edit locally now
 
@@ -46,23 +48,27 @@ delete them in the editor.
 Programmes, Get Involved, Contact, Donate, the journal page body), layout, colours, and
 design. Changing those is a developer task.
 
-## Letting the client edit on the live site (needs their accounts)
+## Live editing via Keystatic Cloud
 
-Local editing requires running `npm run cms`. To let the client edit at
-`https://<site>/keystatic` with the changes going live automatically, switch Keystatic to
-**GitHub mode**:
+The code is wired for Keystatic Cloud (project `virtue-literacy/virtueliteracyafrica`):
 
-1. Push this repo to GitHub.
-2. In `keystatic.config.ts`, change `storage` to:
-   `storage: { kind: 'github', repo: 'OWNER/REPO' }`
-3. Create a GitHub App (Keystatic walks you through this on first load in GitHub mode) and
-   set the env vars it gives you: `KEYSTATIC_GITHUB_CLIENT_ID`,
-   `KEYSTATIC_GITHUB_CLIENT_SECRET`, `KEYSTATIC_SECRET`.
-4. Add the Cloudflare adapter (`@astrojs/cloudflare`) and include the `keystatic()`
-   integration in the build so the `/keystatic` routes deploy as Cloudflare Pages
-   Functions. Content pages stay prerendered/static; only the editor runs on-demand.
-5. Deploy with those env vars. Editors log in with GitHub at `/keystatic`; saves commit to
-   the repo → Cloudflare Pages rebuilds → live.
+- `keystatic.config.ts` — `storage` is `local` in dev (so `npm run cms` edits files
+  directly) and `cloud` in production; `cloud.project` points at the Cloud project.
+- `astro.config.mjs` — `@astrojs/cloudflare` adapter + the `keystatic()` integration, so
+  `/keystatic` and `/api/keystatic/*` deploy as Cloudflare Pages Functions. No env vars or
+  GitHub App are needed — Keystatic Cloud manages auth.
 
-(Keystatic Cloud is an alternative that removes the GitHub-App step, but it's a hosted
-SaaS — GitHub mode keeps everything in your own GitHub + Cloudflare.)
+**Remaining one-time setup (Cloudflare + Keystatic Cloud dashboards — needs your access):**
+
+1. **Keystatic Cloud dashboard:** connect the `virtue-literacy/virtueliteracyafrica`
+   project to the GitHub repo `isaac-ron/virtueliteracyafrica` (installs Cloud's GitHub
+   App with write access), and invite the founder + copywriter as editors.
+2. **Cloudflare Pages → Settings → Functions → Compatibility flags:** add `nodejs_compat`
+   for **both Production and Preview**, and make sure the compatibility date is recent.
+   (Keystatic's server code needs Node built-ins on the Workers runtime.)
+3. Confirm the Pages build command is `npm run build` and output dir is `dist`.
+4. Merge to `main` (or push) → Cloudflare rebuilds → editors sign in at
+   `https://<site>/keystatic` via Keystatic Cloud; saves commit to the repo → auto-redeploy.
+
+Tip: push the branch first to get a Cloudflare **preview** deployment and test `/keystatic`
+there before merging to `main`.

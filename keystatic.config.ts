@@ -6,7 +6,11 @@ import { createElement } from 'react';
 // (blog posts, team, events, gallery). The page templates render these in fixed
 // layouts, so adding entries can't break the design.
 export default config({
-  storage: { kind: 'local' },
+  // Local files while developing (npm run cms); Keystatic Cloud in production
+  // so the founder/copywriter can edit the live site without GitHub accounts.
+  storage:
+    process.env.NODE_ENV === 'development' ? { kind: 'local' } : { kind: 'cloud' },
+  cloud: { project: 'virtue-literacy/virtueliteracyafrica' },
   ui: {
     brand: {
       name: 'Virtue Literacy Africa',
