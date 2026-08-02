@@ -1,13 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { reader } from '../lib/content';
-
-const journal = (await reader.singletons.journal.read())!;
 ---
 
 <BaseLayout
   title="Programmes — Virtue Literacy Africa"
-  description={`VLA's six programme pillars: documentation and publishing, mobile libraries, civic education events, AI learning fellowships, inclusive development with Mwangaza AI, and the ${journal.name}.`}
+  description="VLA's five programme pillars: literacy programmes, mobile and community learning, innovation and AI in education including Mwangaza AI, community partnerships, and research and evidence."
   currentPage="/programmes"
 >
 
@@ -15,204 +12,139 @@ const journal = (await reader.singletons.journal.read())!;
   <section class="page-hero">
     <div class="container">
       <span class="kicker">Programmes</span>
-      <h1>Six pillars. One ecosystem.</h1>
-      <p>Our six pillars form an ecosystem that moves from documentation to delivery, from enrichment to empowerment, and from the community to the policy table. At the grassroots, we reach children directly. Through the {journal.acronym}, we reach the thinking and the systems that shape their world.</p>
+      <h1>Five pillars. One ecosystem.</h1>
+      <p>Each pillar answers a different part of the same problem: children whose communities move, or have been moved, and whose schooling was designed on the assumption that they would not.</p>
     </div>
   </section>
 
-  <!-- PILLAR 1 — PUBLISHING -->
-  <section class="pillar-section" id="publishing">
+  <!-- PILLAR 1 — LITERACY PROGRAMMES -->
+  <section class="pillar-section" id="literacy">
     <div class="container">
       <div class="ps-head reveal">
         <span class="ps-num">01</span>
-        <h2>Documentation, Publishing &amp; Inclusive Books</h2>
+        <h2>Literacy Programmes</h2>
       </div>
-      <p class="ps-intro reveal">VLA commissions and produces books that document settlement realities and respond to them with values-based, civic, and accessible titles — all made with local African illustrators. Publishing is the thread that runs through every other pillar.</p>
+      <p class="ps-intro reveal">Community-based literacy initiatives designed for children and youth, meeting them in the environments they actually live in, including mobile and seasonal communities.</p>
 
-      <div class="ps-grid reveal">
-        <div>
-          <h3>Four book categories</h3>
-          <ul class="book-catalogue">
-            <li>
-              <span class="book-cat-num">Cat. I</span>
-              <div class="book-cat-body">
-                <h4>Documentation Books</h4>
-                <p>First-person accounts and photo-narrative titles documenting life in informal settlements — the foundation of everything else we do.</p>
-              </div>
-            </li>
-            <li>
-              <span class="book-cat-num">Cat. II</span>
-              <div class="book-cat-body">
-                <h4>Values-Based Books</h4>
-                <p>Stories and characters that model character, resilience, and ethical decision-making for young readers.</p>
-              </div>
-            </li>
-            <li>
-              <span class="book-cat-num">Cat. III</span>
-              <div class="book-cat-body">
-                <h4>Civic Education Books</h4>
-                <p>Age-appropriate introductions to rights, governance, community, and active citizenship.</p>
-              </div>
-            </li>
-            <li>
-              <span class="book-cat-num">Cat. IV</span>
-              <div class="book-cat-body">
-                <h4>Accessible &amp; Inclusive Books</h4>
-                <p>Formats designed for children with disabilities, including Braille-ready layouts and audio companions.</p>
-              </div>
-            </li>
-          </ul>
-        </div>
-        <div>
-          <h3>Publishing goals</h3>
-          <ul class="pillar-bullets">
-            <li><span class="pb-marker">/</span><span>Publish a minimum of 2 new books per year in Phase 1, scaling to 6 per year by Phase 3.</span></li>
-            <li><span class="pb-marker">/</span><span>Commission local African illustrators for all titles.</span></li>
-            <li><span class="pb-marker">/</span><span>Distribute free copies to all mobile library units and partner schools.</span></li>
-            <li><span class="pb-marker">/</span><span>Build an open-access digital archive of settlement documentation.</span></li>
-          </ul>
-        </div>
-      </div>
+      <ul class="pillar-bullets reveal">
+        <li><span class="pb-marker">/</span><span>Reading and foundational literacy sessions held where children already gather, including homes, places of worship, and shared community space.</span></li>
+        <li><span class="pb-marker">/</span><span>Delivery scheduled around herding, market, and migration calendars rather than a fixed school term.</span></li>
+        <li><span class="pb-marker">/</span><span>Facilitators recruited from the communities themselves, so a programme does not leave when a visitor does.</span></li>
+        <li><span class="pb-marker">/</span><span>Materials in the languages children speak at home, alongside the language of instruction.</span></li>
+        <li><span class="pb-marker">/</span><span>Progress tracked per child rather than per class, because attendance is not continuous.</span></li>
+      </ul>
     </div>
   </section>
 
-  <!-- PILLAR 2 — MOBILE LIBRARIES -->
-  <section class="pillar-section" id="libraries">
+  <!-- PILLAR 2 — MOBILE & COMMUNITY LEARNING -->
+  <section class="pillar-section" id="mobile-learning">
     <div class="container">
       <div class="ps-head reveal">
         <span class="ps-num">02</span>
-        <h2>Mobile Children's Libraries</h2>
+        <h2>Mobile &amp; Community Learning</h2>
       </div>
-      <p class="ps-intro reveal">Roving library units bring reading directly into communities on a reliable, fixed weekly schedule — removing the access barrier for children who have no library within reach.</p>
+      <p class="ps-intro reveal">Flexible, community-anchored learning spaces that adapt to migration, displacement, and the realities of life in arid and semi-arid areas.</p>
+
       <ul class="pillar-bullets reveal">
-        <li><span class="pb-marker">/</span><span>Deploy 2 mobile library units in Year 1, serving Kibera, Mathare, and Korogocho on a fixed weekly schedule.</span></li>
-        <li><span class="pb-marker">/</span><span>Each unit carries a curated selection of VLA-published and third-party books across reading levels.</span></li>
-        <li><span class="pb-marker">/</span><span>Library visits are paired with brief storytelling or read-aloud sessions led by trained facilitators.</span></li>
-        <li><span class="pb-marker">/</span><span>Track readership and book circulation to guide future publishing decisions.</span></li>
+        <li><span class="pb-marker">/</span><span>Learning spaces that can be set up, moved, and re-established as families move.</span></li>
+        <li><span class="pb-marker">/</span><span>Community reading spaces hosted by partner institutions, so a place to read outlasts any single visit.</span></li>
+        <li><span class="pb-marker">/</span><span>Provision that continues through drought and displacement rather than pausing until conditions improve.</span></li>
+        <li><span class="pb-marker">/</span><span>Reading materials chosen to survive the distances and conditions they travel through.</span></li>
+        <li><span class="pb-marker">/</span><span>Sessions open to any child in the community, whether or not they are enrolled in a school.</span></li>
       </ul>
     </div>
   </section>
 
-  <!-- PILLAR 3 — EVENTS -->
-  <section class="pillar-section" id="events">
+  <!-- PILLAR 3 — INNOVATION & AI, INCLUDING MWANGAZA -->
+  <section class="pillar-section" id="innovation">
     <div class="container">
       <div class="ps-head reveal">
         <span class="ps-num">03</span>
-        <h2>Reading, Storytelling, Civic Education &amp; Enrichment Events</h2>
+        <h2>Innovation &amp; AI in Education</h2>
       </div>
-      <p class="ps-intro reveal">Events are where community meets programme. Children read, compete, learn their rights, and are publicly celebrated — transforming literacy from a private act into a civic one.</p>
-      <ul class="pillar-bullets reveal">
-        <li><span class="pb-marker">/</span><span>Reading competitions and spelling bees open to all settlement children.</span></li>
-        <li><span class="pb-marker">/</span><span>Storytelling circles and oral narrative sessions.</span></li>
-        <li><span class="pb-marker">/</span><span>Community cinema screenings of documentary and educational content.</span></li>
-        <li><span class="pb-marker">/</span><span>Civic education workshops: know-your-rights sessions adapted for children.</span></li>
-        <li><span class="pb-marker">/</span><span>Art and illustration workshops tied to the VLA book series.</span></li>
-        <li><span class="pb-marker">/</span><span>Community health and wellness days co-facilitated with partner health NGOs.</span></li>
-        <li><span class="pb-marker">/</span><span>Annual VLA Reading Day: a public celebration of children's reading achievement.</span></li>
-        <li><span class="pb-marker">/</span><span>After-school enrichment clubs operating in partnership with local schools.</span></li>
-      </ul>
-      <div class="callout reveal">
-        <span class="callout-label">VLA Principle</span>
-        <h3>Literacy + Civic Awareness = Active Citizens</h3>
-        <p>A child who can read but does not know their rights is only half-equipped. VLA's events programme treats civic education not as an add-on to literacy, but as its natural destination.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- PILLAR 4 — FELLOWSHIPS -->
-  <section class="pillar-section" id="fellowships">
-    <div class="container">
-      <div class="ps-head reveal">
-        <span class="ps-num">04</span>
-        <h2>AI Learning Fellowships &amp; Civic Leadership</h2>
-      </div>
-      <p class="ps-intro reveal">VLA's fellowship programme backs young people aged 18&ndash;28 to build AI-powered solutions to real community problems — and funds them to do it. Fellowship winners will:</p>
-      <ul class="pillar-bullets reveal">
-        <li><span class="pb-marker">/</span><span>Receive structured mentorship from AI practitioners and civic leaders.</span></li>
-        <li><span class="pb-marker">/</span><span>Be funded to build an AI-powered community project addressing a documented local need.</span></li>
-        <li><span class="pb-marker">/</span><span>Present their project at the annual VLA Community Summit.</span></li>
-        <li><span class="pb-marker">/</span><span>Gain access to a VLA alumni network for ongoing support and collaboration.</span></li>
-        <li><span class="pb-marker">/</span><span>Be profiled in VLA's annual impact report and digital platforms.</span></li>
-      </ul>
-      <div class="callout reveal">
-        <span class="callout-label">The Fellowship Philosophy</span>
-        <h3>We back builders, not consumers.</h3>
-        <p>We do not train young people to consume AI — we back them to deploy it for their communities. Every fellowship project must be rooted in a documented community need.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- PILLAR 5 — INCLUSION / MWANGAZA -->
-  <section class="pillar-section" id="inclusion">
-    <div class="container">
-      <div class="ps-head reveal">
-        <span class="ps-num">05</span>
-        <h2>Inclusive Development &amp; Mwangaza AI</h2>
-      </div>
-      <p class="ps-intro reveal">Virtue Literacy Africa is committed to ensuring that the benefits of literacy, storytelling, and civic education are accessible to every child — including those with disabilities. This pillar has two workstreams.</p>
+      <p class="ps-intro reveal">Exploring how artificial intelligence and emerging tools can expand access to learning and equip young people with skills for the future.</p>
 
       <div class="ps-grid reveal">
         <div>
-          <h3>Workstream A &mdash; Inclusive Books &amp; Facilitation</h3>
-          <ul class="pillar-bullets">
-            <li><span class="pb-marker">/</span><span>Publish a minimum of 1 accessible/inclusive title per year (see Pillar 1).</span></li>
-            <li><span class="pb-marker">/</span><span>Partner with disability-focused organisations to co-design book formats and content.</span></li>
-            <li><span class="pb-marker">/</span><span>Ensure all mobile library units carry accessible materials.</span></li>
-            <li><span class="pb-marker">/</span><span>Train facilitators in inclusive facilitation and basic sign language.</span></li>
-            <li><span class="pb-marker">/</span><span>Advocate for inclusive education policy at county and national level.</span></li>
-          </ul>
+          <h3>Mwangaza AI &mdash; early developmental screening</h3>
+          <p style="color:var(--ink-soft);line-height:1.7">Undetected developmental delays and disabilities are a significant, often invisible barrier to literacy. Children who cannot hear, see, or process language are frequently mistaken for slow learners rather than identified and supported.</p>
+          <p style="color:var(--ink-soft);line-height:1.7;margin-top:1rem">This barrier compounds further in pastoralist, arid, and semi-arid communities, where specialists and screening services are often entirely out of reach, meaning these children may otherwise never be identified at all. Through Mwangaza AI, we extend early developmental screening to close that gap, identifying barriers before they compound into literacy failure and connecting children to appropriate support pathways where available.</p>
         </div>
         <div>
-          <h3>Workstream B &mdash; Mwangaza AI</h3>
-          <p style="color:var(--ink-soft);font-size:0.95rem;margin-bottom:1rem;line-height:1.65"><em>Mwangaza</em> ("light" in Swahili) is VLA's flagship AI inclusion initiative — an offline-capable tool designed for the families and communities that need it most.</p>
+          <h3>How it works in practice</h3>
           <ul class="pillar-bullets">
-            <li><span class="pb-marker">/</span><span>An offline-capable AI tool for caregivers, parents, and teachers in low-connectivity settlements.</span></li>
-            <li><span class="pb-marker">/</span><span>Provides reading guidance, early literacy assessment, and learning activity suggestions.</span></li>
-            <li><span class="pb-marker">/</span><span>Built on open-source models, localisable to Swahili, Kikuyu, Luo, and other Kenyan languages.</span></li>
-            <li><span class="pb-marker">/</span><span>Designed with and for persons with disabilities: voice-first interface, high-contrast visual mode.</span></li>
-            <li><span class="pb-marker">/</span><span>Free to access; funded through VLA's partnership and sponsorship model.</span></li>
+            <li><span class="pb-marker">/</span><span>Built to run offline on low-cost devices, for communities with little or no connectivity.</span></li>
+            <li><span class="pb-marker">/</span><span>Administered by trained community facilitators and caregivers, not by a specialist who has to be present.</span></li>
+            <li><span class="pb-marker">/</span><span>Screens for hearing, vision, and language-processing barriers that routinely go unnoticed.</span></li>
+            <li><span class="pb-marker">/</span><span>Refers children onward to appropriate support pathways where those pathways exist.</span></li>
+            <li><span class="pb-marker">/</span><span>Localisable to the languages spoken in the communities we serve.</span></li>
+            <li><span class="pb-marker">/</span><span>Free at the point of use.</span></li>
           </ul>
         </div>
       </div>
 
       <div class="callout reveal">
         <span class="callout-label">The Mwangaza Promise</span>
-        <h3>Light for everyone.</h3>
-        <p>Mwangaza will never be paywalled. It is designed for the families who need it most — built to work offline, in local languages, on low-cost devices.</p>
+        <h3>Mwangaza will never be paywalled.</h3>
+        <p><em>Mwangaza</em> means "light" in Swahili. It is built for the families who need it most, which means it has to work offline, in local languages, on the devices those families already own.</p>
       </div>
     </div>
   </section>
 
-  <!-- PILLAR 6 — AJGAD -->
-  <section class="pillar-section pillar-section--journal" id="ajgad">
+  <!-- PILLAR 4 — COMMUNITY PARTNERSHIPS -->
+  <section class="pillar-section" id="partnerships">
     <div class="container">
       <div class="ps-head reveal">
-        <span class="ps-num">06</span>
-        <h2>{journal.name}</h2>
+        <span class="ps-num">04</span>
+        <h2>Community Partnerships</h2>
       </div>
-      <p class="ps-intro reveal">The work of reaching children in informal settlements generates something beyond impact on the ground. It generates evidence &mdash; about what communities need, about what works, and about the gap between the policies designed to serve people and the lives those people are actually living. That evidence deserves a rigorous, credible, internationally visible platform.</p>
+      <p class="ps-intro reveal">Working closely with families, local leaders, and trusted institutions like churches to build sustainable, culturally grounded pathways to literacy.</p>
+
+      <ul class="pillar-bullets reveal">
+        <li><span class="pb-marker">/</span><span>Religious institutions, which already hold both trust and physical space in the communities we serve.</span></li>
+        <li><span class="pb-marker">/</span><span>Families and caregivers, who are the most consistent teachers a mobile child has.</span></li>
+        <li><span class="pb-marker">/</span><span>Local leaders, who determine whether a programme is welcome and whether it lasts.</span></li>
+        <li><span class="pb-marker">/</span><span>Schools and health providers, where they are present, so a screening referral has somewhere to go.</span></li>
+        <li><span class="pb-marker">/</span><span>County and national education authorities, so that what works can outlive our involvement in it.</span></li>
+      </ul>
+
+      <div class="callout reveal">
+        <span class="callout-label">How we enter a community</span>
+        <h3>We build on existing trust rather than starting from scratch.</h3>
+        <p>The communities we work in have adapted to change for generations. Our job is to add literacy provision to structures that already function, not to replace them with something that arrives and then leaves.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PILLAR 5 — RESEARCH & EVIDENCE -->
+  <section class="pillar-section pillar-section--research" id="research">
+    <div class="container">
+      <div class="ps-head reveal">
+        <span class="ps-num">05</span>
+        <h2>Research &amp; Evidence on Inclusive Education, Governance and AI</h2>
+      </div>
+      <p class="ps-intro reveal">We document and publish findings from our own programmes and partnerships, generating credible evidence on what works in literacy, inclusive education, and AI-enabled learning for underprivileged and displaced children.</p>
 
       <div class="ps-grid reveal">
         <div>
-          <h3>The scholarly voice of our work</h3>
-          <p style="color:var(--ink-soft);line-height:1.7">The {journal.name} ({journal.acronym}) is a peer-reviewed, open-access journal published biannually &mdash; a home for evidence-based research on governance, development, and social innovation across Africa, written by and for the researchers, practitioners, policymakers, and scholars shaping the continent's future.</p>
-          <p style="color:var(--ink-soft);line-height:1.7;margin-top:1rem">It carries the same conviction that drives everything else we do: that the gap between Africa's potential and Africa's reality is not fixed &mdash; and that knowledge, honestly gathered and rigorously shared, is one of the most powerful tools we have to close it.</p>
+          <h3>What we publish</h3>
+          <p style="color:var(--ink-soft);line-height:1.7">Standalone reports, briefs, and case studies drawn from the programmes we run. No issues, no volumes, no subscription. Each output is written to be read by someone with a decision to make and limited time in which to make it.</p>
+          <p style="color:var(--ink-soft);line-height:1.7;margin-top:1rem">Keeping the format light is deliberate. Evidence that takes a year to reach print is evidence that arrives after the decision it was meant to inform.</p>
         </div>
         <div>
-          <h3>At a glance</h3>
+          <h3>Who it reaches</h3>
           <ul class="pillar-bullets">
-            <li><span class="pb-marker">/</span><span>Open access &mdash; free to read, cite, and share globally.</span></li>
-            <li><span class="pb-marker">/</span><span>Double-blind peer review at every stage.</span></li>
-            <li><span class="pb-marker">/</span><span>Biannual publication, with June and December editions.</span></li>
-            <li><span class="pb-marker">/</span><span>Online first &mdash; accepted articles published on acceptance.</span></li>
-            <li><span class="pb-marker">/</span><span>Nine focus areas, from governance to climate policy.</span></li>
+            <li><span class="pb-marker">/</span><span>Educators and facilitators working with mobile and displaced learners.</span></li>
+            <li><span class="pb-marker">/</span><span>County and national policymakers responsible for education provision.</span></li>
+            <li><span class="pb-marker">/</span><span>Development partners deciding where funding goes and what it should buy.</span></li>
+            <li><span class="pb-marker">/</span><span>Organisations running comparable programmes elsewhere on the continent.</span></li>
           </ul>
         </div>
       </div>
 
       <div class="pillar-actions reveal">
-        <a href="/ajgad" class="btn btn-coral">Visit the journal &rarr;</a>
-        <a href="/get-involved" class="btn">Partner with the {journal.acronym}</a>
+        <a href="/research" class="btn btn-coral">Research &amp; findings &rarr;</a>
+        <a href="/get-involved" class="btn">Partner on research</a>
       </div>
     </div>
   </section>
@@ -224,17 +156,17 @@ const journal = (await reader.singletons.journal.read())!;
       <div class="act-grid reveal">
         <div class="act-cell">
           <h3>Sponsor</h3>
-          <p>Fund a mobile unit, a book publication, a fellowship cohort, or a civic event. Every gift ties to a named deliverable.</p>
-          <a class="go" href="/get-involved">See sponsorship options &rarr;</a>
+          <p>Fund a literacy programme cycle, a community reading space, or a round of developmental screening. Every gift ties to a named deliverable.</p>
+          <a class="go" href="/donate">See giving options &rarr;</a>
         </div>
         <div class="act-cell">
           <h3>Partner</h3>
-          <p>Schools, NGOs, government agencies, and governance organisations can partner at the pillar level.</p>
+          <p>Faith institutions, schools, NGOs, government agencies, and development partners can partner at the pillar level.</p>
           <a class="go" href="/get-involved">Start a conversation &rarr;</a>
         </div>
         <div class="act-cell">
           <h3>Volunteer your skills</h3>
-          <p>Illustrators, AI practitioners, civic educators, health workers, and storytellers are all welcome.</p>
+          <p>Teachers, facilitators, translators, screening and disability specialists, and researchers are all welcome.</p>
           <a class="go" href="/get-involved">Get involved &rarr;</a>
         </div>
       </div>

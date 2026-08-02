@@ -1,13 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { reader } from '../lib/content';
-
-const journal = (await reader.singletons.journal.read())!;
 ---
 
 <BaseLayout
   title="Contact — Virtue Literacy Africa"
-  description="Get in touch with Virtue Literacy Africa. Send a message about partnership, sponsorship, media, or volunteering."
+  description="Get in touch with Virtue Literacy Africa. Send a message about partnership, sponsorship, research, media, or volunteering."
   currentPage="/contact"
 >
 
@@ -55,9 +52,7 @@ const journal = (await reader.singletons.journal.read())!;
               <option value="professional-volunteering">Professional Volunteering</option>
               <option value="media-communications">Media &amp; Communications</option>
               <option value="institutional-partnership">Institutional Partnership</option>
-              <option value="governance-partnership">Governance &amp; Democracy Sector Partnership</option>
-              <option value="ajgad-submission">{journal.acronym} &mdash; Journal Submission</option>
-              <option value="ajgad-partnership">{journal.acronym} &mdash; Journal Partnership</option>
+              <option value="research-partnership">Research &amp; Policy Partnership</option>
               <option value="other">Something else</option>
             </select>
           </div>
@@ -89,8 +84,8 @@ const journal = (await reader.singletons.journal.read())!;
             <span>Nairobi, Kenya</span>
           </div>
           <div class="lc-row">
-            <strong>Journal</strong>
-            <span><a href="/ajgad">{journal.acronym}</a></span>
+            <strong>Research</strong>
+            <span><a href="/research">Research &amp; Findings</a></span>
           </div>
         </div>
 
@@ -116,12 +111,12 @@ const journal = (await reader.singletons.journal.read())!;
         </div>
         <div class="act-cell">
           <h3>Our programmes</h3>
-          <p>Understand the six pillars and how each one creates impact &mdash; from the community to the policy table.</p>
-          <a class="go" href="/programmes">Six pillars &rarr;</a>
+          <p>Understand the five pillars and how each one reaches children whose communities move.</p>
+          <a class="go" href="/programmes">Five pillars &rarr;</a>
         </div>
         <div class="act-cell">
           <h3>Our story</h3>
-          <p>From <em>Place Called Kibera</em> to a five-pillar programme — the full background.</p>
+          <p>Who we work with, where, and why the literacy gap in these communities is structural.</p>
           <a class="go" href="/about">Our story &rarr;</a>
         </div>
       </div>

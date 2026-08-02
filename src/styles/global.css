@@ -76,7 +76,7 @@ h1, h2, h3 { margin: 0; font-weight: 900; line-height: 0.98; letter-spacing: -0.
 .btn-coral { background: var(--coral); border-color: var(--coral); color: var(--white); }
 .btn-coral:hover { background: var(--coral-deep); border-color: var(--coral-deep); color: var(--white); }
 
-/* ---------- Journal announcement banner (homepage) ---------- */
+/* ---------- Announcement banner (homepage) ---------- */
 .jbanner { background: var(--coral); color: var(--white); border-bottom: 2px solid var(--ink); }
 .jbanner[hidden] { display: none; }
 .jbanner-inner {
@@ -375,6 +375,108 @@ h1, h2, h3 { margin: 0; font-weight: 900; line-height: 0.98; letter-spacing: -0.
 .nums .l { display: block; margin-top: 0.7rem; color: var(--on-ink-soft); font-size: 0.9rem; }
 @media (max-width: 680px) { .nums-grid { grid-template-columns: 1fr 1fr; gap: 1.5rem 1px; } .nums .cell:nth-child(3) { border-left: 0; padding-left: 0; } }
 
+/* ---------- Where We Work map (ink band, hand-built SVG) ----------
+   Country-level focus only. There are deliberately no pins: VLA does not
+   publish site locations, and a marker would imply precision it cannot back. */
+.wmap { padding: var(--section-pad) 0; border-bottom: 2px solid var(--ink); background: var(--ink); color: var(--on-ink); }
+.wmap .kicker { color: var(--accent); display: block; margin-bottom: 1rem; }
+.wmap-heading { color: var(--on-ink); font-size: clamp(1.9rem, 4vw, 3rem); max-width: 20ch; }
+.wmap-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  align-items: center;
+  margin-top: clamp(1.75rem, 3.5vw, 2.75rem);
+}
+/* The viewBox is framed on the three focus countries; neighbours run past it by
+   design, so the frame doubles as the clip. */
+.wmap-figure { margin: 0; border: 2px solid rgba(255,255,255,0.28); overflow: hidden; }
+.wmap-svg { display: block; width: 100%; height: auto; }
+
+/* Neighbours: present enough to place the region, quiet enough to stay out of the way. */
+.wmap-context path { fill: none; stroke: rgba(255,255,255,0.22); stroke-width: 1; vector-effect: non-scaling-stroke; }
+
+.wmap-country {
+  fill: rgba(255,255,255,0.12);
+  stroke: rgba(255,255,255,0.65);
+  stroke-width: 2;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+  cursor: pointer;
+  transition: fill 0.28s var(--ease), stroke 0.28s var(--ease);
+}
+.wmap-country:hover { fill: rgba(255,255,255,0.26); stroke: #fff; }
+.wmap-country.is-active { fill: var(--accent); stroke: #fff; }
+
+.wmap-labels text {
+  fill: var(--on-ink-soft);
+  font-family: var(--font);
+  font-size: 1.15px;
+  font-weight: 800;
+  letter-spacing: 0.06px;
+  text-transform: uppercase;
+  text-anchor: middle;
+  pointer-events: none;
+  transition: fill 0.28s var(--ease);
+}
+.wmap-labels text.is-active { fill: var(--ink); }
+
+.wmap-tabs { display: flex; flex-wrap: wrap; gap: 0; border: 2px solid rgba(255,255,255,0.28); }
+.wmap-tab {
+  flex: 1 1 auto;
+  padding: 0.85rem 1rem;
+  background: transparent;
+  border: 0;
+  border-left: 2px solid rgba(255,255,255,0.28);
+  font-family: var(--font);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--on-ink-soft);
+  cursor: pointer;
+  transition: background-color 0.2s var(--ease), color 0.2s var(--ease);
+}
+.wmap-tab:first-child { border-left: 0; }
+.wmap-tab:hover { background: rgba(255,255,255,0.1); color: var(--on-ink); }
+.wmap-tab[aria-selected="true"] { background: var(--accent); color: var(--ink); }
+.wmap-tab:focus-visible,
+.wmap-panel [role="tabpanel"]:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+
+.wmap-blurb { margin-top: clamp(1.1rem, 2.5vw, 1.5rem); color: var(--on-ink); font-size: clamp(1rem, 1.4vw, 1.12rem); line-height: 1.7; max-width: 46ch; }
+
+.wmap-communities { margin-top: clamp(1.4rem, 3vw, 2rem); border-top: 1px solid rgba(255,255,255,0.22); padding-top: clamp(1rem, 2vw, 1.3rem); }
+.wmap-communities-label { display: block; font-size: 0.7rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.7rem; }
+.wmap-communities ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.wmap-communities li { border: 1px solid rgba(255,255,255,0.35); padding: 0.3rem 0.65rem; font-size: 0.8rem; color: var(--on-ink-soft); }
+
+.wmap-note { margin-top: clamp(1.6rem, 3vw, 2.4rem); max-width: 62ch; color: var(--on-ink-soft); font-size: 0.95rem; line-height: 1.7; }
+
+@media (max-width: 860px) {
+  .wmap-grid { grid-template-columns: 1fr; }
+  .wmap-figure { max-width: 460px; }
+}
+@media (max-width: 520px) {
+  .wmap-tabs { flex-direction: column; }
+  .wmap-tab { border-left: 0; border-top: 2px solid rgba(255,255,255,0.28); }
+  .wmap-tab:first-child { border-top: 0; }
+  .wmap-labels text { font-size: 1.5px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wmap-country, .wmap-labels text, .wmap-tab { transition: none; }
+}
+
+/* Word-led variant of the same band: three named communities instead of four figures. */
+.nums--where .nums-grid { grid-template-columns: repeat(3, 1fr); }
+.nums--where .n { display: block; font-size: clamp(1.45rem, 3vw, 2.3rem); line-height: 1.12; letter-spacing: -0.02em; text-wrap: balance; }
+.nums--where .l { margin-top: 0.65rem; }
+.nums-note { margin-top: clamp(1.6rem, 3vw, 2.4rem); max-width: 62ch; color: var(--on-ink-soft); font-size: 0.95rem; line-height: 1.7; }
+@media (max-width: 680px) {
+  .nums--where .nums-grid { grid-template-columns: 1fr; gap: 0; }
+  .nums--where .cell { border-left: 0; padding: 1.4rem 0 0; border-top: 1px solid rgba(255,255,255,0.14); margin-top: 1.4rem; }
+  .nums--where .cell:first-child { border-top: 0; margin-top: 0; padding-top: 0; }
+}
+
 /* ---------- Act / CTA (modular blocks) ---------- */
 .act { padding: var(--section-pad) 0; border-bottom: 2px solid var(--ink); }
 .act h2 { font-size: clamp(2rem, 4.5vw, 3.4rem); margin-bottom: clamp(1.5rem, 3vw, 2.5rem); }
@@ -402,7 +504,7 @@ h1, h2, h3 { margin: 0; font-weight: 900; line-height: 0.98; letter-spacing: -0.
 .close-fig:hover::before { opacity: 0; }
 @media (max-width: 760px) { .close-grid { grid-template-columns: 1fr; } .close-fig { aspect-ratio: 16/10; } }
 
-/* ---------- Callout box (brief callouts: Kibera, Fellowship, Mwangaza…) ---------- */
+/* ---------- Callout box (brief callouts: Mwangaza, inclusion, partnership…) ---------- */
 .callout {
   border-left: 4px solid var(--accent);
   background: var(--paper-2);
@@ -516,11 +618,11 @@ h1, h2, h3 { margin: 0; font-weight: 900; line-height: 0.98; letter-spacing: -0.
 .ps-grid h3 { font-size: 1.25rem; margin-bottom: 1rem; }
 @media (max-width: 760px) { .ps-grid { grid-template-columns: 1fr; } }
 
-/* ---------- Book catalogue (Pillar 1 book categories) ---------- */
-.book-catalogue { list-style: none; margin: clamp(1.5rem, 3vw, 2.5rem) 0 0; padding: 0; border: 2px solid var(--ink); }
-.book-catalogue li { display: grid; grid-template-columns: auto 1fr; border-top: 1px solid var(--line); }
-.book-catalogue li:first-child { border-top: 0; }
-.book-cat-num {
+/* ---------- Findings list (research outputs) ---------- */
+.findings-list { list-style: none; margin: clamp(1.5rem, 3vw, 2.5rem) 0 0; padding: 0; border: 2px solid var(--ink); }
+.findings-list li { display: grid; grid-template-columns: auto 1fr; border-top: 1px solid var(--line); }
+.findings-list li:first-child { border-top: 0; }
+.findings-type {
   background: var(--ink);
   color: var(--accent);
   font-weight: 900;
@@ -534,9 +636,24 @@ h1, h2, h3 { margin: 0; font-weight: 900; line-height: 0.98; letter-spacing: -0.
   justify-content: center;
   text-align: center;
 }
-.book-cat-body { padding: 1.1rem 1.4rem; }
-.book-cat-body h4 { font-size: 1.05rem; margin-bottom: 0.3rem; }
-.book-cat-body p { color: var(--ink-soft); font-size: 0.93rem; line-height: 1.6; }
+.findings-body { padding: 1.1rem 1.4rem; }
+.findings-body h4 { font-size: 1.05rem; margin-bottom: 0.3rem; }
+.findings-body p { color: var(--ink-soft); font-size: 0.93rem; line-height: 1.6; }
+.findings-date { display: block; font-size: 0.72rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 0.35rem; }
+.findings-link {
+  display: inline-block;
+  margin-top: 0.7rem;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--coral);
+  text-underline-offset: 3px;
+  text-decoration-thickness: 2px;
+}
+.findings-link:hover { color: var(--coral-deep); }
 
 /* ---------- Get involved list ---------- */
 .gi-section { padding: var(--section-pad) 0; border-bottom: 2px solid var(--ink); }
@@ -688,50 +805,17 @@ h1, h2, h3 { margin: 0; font-weight: 900; line-height: 0.98; letter-spacing: -0.
   .give-mark { grid-row: span 2; align-self: center; }
 }
 
-/* ---------- AJGAD bridge pillar (homepage, sixth pillar) ---------- */
-.pillar-bridge {
-  border: 2px solid var(--ink);
-  border-top: 0;
-  background: var(--ink);
-  color: var(--on-ink);
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  gap: clamp(1rem, 3vw, 2.25rem);
-  align-items: center;
-  padding: clamp(1.3rem, 3vw, 1.9rem) clamp(1.3rem, 3vw, 1.9rem);
-}
-.pillar-bridge .pn {
-  background: var(--coral);
-  color: var(--white);
-  font-weight: 900;
-  font-size: clamp(1.4rem, 3vw, 1.9rem);
-  letter-spacing: -0.02em;
-  padding: 0.12em 0.42em;
-  line-height: 1;
-  align-self: start;
-}
-.pillar-bridge .pb-text .pb-tag { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--coral); display: block; margin-bottom: 0.4rem; }
-.pillar-bridge .pb-text h3 { color: var(--on-ink); font-size: clamp(1.2rem, 2.2vw, 1.6rem); margin-bottom: 0.45rem; }
-.pillar-bridge .pb-text p { color: var(--on-ink-soft); font-size: 0.95rem; line-height: 1.65; max-width: 64ch; }
-.pillar-bridge .btn-coral { white-space: nowrap; }
-@media (max-width: 760px) {
-  .pillar-bridge { grid-template-columns: auto 1fr; }
-  .pillar-bridge .btn-coral { grid-column: 1 / -1; justify-self: start; }
-}
-
-/* ---------- Journal-accented programme pillar (Pillar vi) ---------- */
-.pillar-section--journal { background: var(--paper-2); }
-.pillar-section--journal .ps-num { color: var(--coral); }
-.pillar-section--journal .pb-marker { color: var(--coral); }
+/* ---------- Research-accented programme pillar (Pillar 5) ---------- */
+.pillar-section--research { background: var(--paper-2); }
+.pillar-section--research .ps-num { color: var(--coral); }
+.pillar-section--research .pb-marker { color: var(--coral); }
 .pillar-actions { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: clamp(1.5rem, 3vw, 2.25rem); }
 
-/* ---------- AJGAD page (journal hero + indexes) ---------- */
-.page-hero--journal { border-bottom-color: var(--coral); }
-.page-hero--journal .kicker { color: var(--coral); }
-.journal-meta { font-size: 0.82rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--on-ink-soft); margin-top: 1.25rem; }
-.journal-meta b { color: var(--coral); font-weight: 800; }
+/* ---------- Research & Findings page ---------- */
+.page-hero--research { border-bottom-color: var(--coral); }
+.page-hero--research .kicker { color: var(--coral); }
 
-/* Focus areas — subject index, journal table-of-contents feel */
+/* Focus areas — subject index */
 .focus-index { list-style: none; margin: 0; padding: 0; border: 2px solid var(--ink); display: grid; grid-template-columns: 1fr 1fr; }
 .focus-index li { display: grid; grid-template-columns: auto 1fr; gap: 0.9rem; align-items: baseline; padding: 1rem 1.3rem; border-top: 1px solid var(--line); }
 .focus-index li:nth-child(odd) { border-right: 1px solid var(--line); }
@@ -752,7 +836,7 @@ h1, h2, h3 { margin: 0; font-weight: 900; line-height: 0.98; letter-spacing: -0.
 .pub-model .pm-val { color: var(--ink-soft); font-size: 0.95rem; line-height: 1.55; }
 @media (max-width: 520px) { .pub-model li { grid-template-columns: 1fr; gap: 0.2rem; } }
 
-/* Journal callout — coral variant */
+/* Callout — coral variant (research) */
 .callout--coral { border-left-color: var(--coral); }
 .callout--coral .callout-label { color: var(--coral); }
 

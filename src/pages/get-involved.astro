@@ -1,13 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { reader } from '../lib/content';
-
-const journal = (await reader.singletons.journal.read())!;
 ---
 
 <BaseLayout
   title="Get Involved — Virtue Literacy Africa"
-  description="Partner with, fund, or volunteer for Virtue Literacy Africa. Six ways to support literacy, civic education, and AI learning in Nairobi's informal settlements."
+  description="Partner with, fund, or volunteer for Virtue Literacy Africa. Six ways to support literacy and inclusive learning in pastoralist, refugee, and drylands communities."
   currentPage="/get-involved"
 >
 
@@ -16,7 +13,7 @@ const journal = (await reader.singletons.journal.read())!;
     <div class="container">
       <span class="kicker">Partnership &amp; Support</span>
       <h1>There is a role for everyone in this work.</h1>
-      <p>Virtue Literacy Africa invites partners, funders, corporates, governments, and individuals to join us in building literacy, civic awareness, and opportunity in Africa's informal settlements.</p>
+      <p>We invite partners, funders, corporates, governments, and individuals to join us in advancing literacy for children in pastoralist, refugee, and arid and semi-arid communities across Kenya, Ethiopia, and South Sudan.</p>
     </div>
   </section>
 
@@ -30,7 +27,7 @@ const journal = (await reader.singletons.journal.read())!;
           <span class="gi-num">1</span>
           <div class="gi-body">
             <h3>Financial Sponsorship</h3>
-            <p>Fund a mobile library unit, a book publication, a fellowship cohort, or a civic education event. All gifts are tied to named, reportable deliverables.</p>
+            <p>Fund a literacy programme cycle, a community reading space, or a round of developmental screening. All gifts are tied to named, reportable deliverables.</p>
             <p style="margin-top:0.6rem"><a href="/donate" style="font-weight:800;letter-spacing:0.04em;text-transform:uppercase;font-size:0.82rem;color:var(--ink);text-decoration:underline;text-decoration-color:var(--accent);text-underline-offset:3px;text-decoration-thickness:2px">Make a gift &rarr;</a></p>
           </div>
         </li>
@@ -38,50 +35,50 @@ const journal = (await reader.singletons.journal.read())!;
           <span class="gi-num">2</span>
           <div class="gi-body">
             <h3>In-Kind Donations</h3>
-            <p>Books, technology hardware, vehicles, printing services, or office space. In-kind support is credited and reported in our annual impact report.</p>
+            <p>Books and reading materials, devices for offline screening, vehicles, printing, or space. In-kind support is credited and reported in our annual impact report.</p>
           </div>
         </li>
         <li>
           <span class="gi-num">3</span>
           <div class="gi-body">
             <h3>Professional Volunteering</h3>
-            <p>Mentors, illustrators, civic educators, AI practitioners, health workers, and storytellers. Skills-based volunteering is integral to how we deliver every pillar.</p>
+            <p>Teachers, facilitators, translators, disability and screening specialists, AI practitioners, and researchers. Skills-based volunteering is integral to how we deliver every pillar.</p>
           </div>
         </li>
         <li>
           <span class="gi-num">4</span>
           <div class="gi-body">
             <h3>Media &amp; Communications</h3>
-            <p>Help document and amplify VLA's work through journalism, photography, film, or social media. Visibility is essential to our fundraising and advocacy mission.</p>
+            <p>Help document our work through journalism, photography, film, or social media. Communities we serve are rarely reported on from the inside, and visibility is essential to our fundraising and advocacy.</p>
           </div>
         </li>
         <li>
           <span class="gi-num">5</span>
           <div class="gi-body">
             <h3>Institutional Partnerships</h3>
-            <p>Schools, universities, health NGOs, county and national government agencies. Institutional partnerships extend our reach and ground our programmes in existing community infrastructure.</p>
+            <p>Faith institutions, schools, universities, health NGOs, and county and national government agencies. These partnerships extend our reach and ground our programmes in infrastructure that already exists.</p>
           </div>
         </li>
         <li>
           <span class="gi-num">6</span>
           <div class="gi-body">
-            <h3>Governance &amp; Democracy Sector Partnerships</h3>
-            <p>Legal aid organisations, know-your-rights NGOs, civic tech initiatives, and election-monitoring bodies. Civic education is at the heart of VLA's work, and these partnerships deepen it.</p>
+            <h3>Research &amp; Policy Partnerships</h3>
+            <p>Research institutions, development partners, and policy bodies working on education for mobile and displaced populations. These partnerships turn what we learn on the ground into decisions made above it.</p>
           </div>
         </li>
       </ul>
     </div>
   </section>
 
-  <!-- PARTNER WITH THE AJGAD -->
+  <!-- PARTNER ON RESEARCH -->
   <section style="padding:var(--section-pad) 0;border-bottom:2px solid var(--ink);background:var(--paper-2)">
     <div class="container reveal">
-      <span class="kicker" style="display:block;margin-bottom:1rem;color:var(--coral)">Partner with the Journal</span>
-      <h2 style="font-size:clamp(1.9rem,3.8vw,2.6rem);margin-bottom:clamp(1rem,2vw,1.4rem);max-width:24ch">Partner with the {journal.acronym}.</h2>
-      <p style="color:var(--ink-soft);max-width:64ch;line-height:1.75">{journal.name} ({journal.acronym}) is seeking founding institutional partners &mdash; universities, research bodies, development organisations, and corporate partners committed to evidence-based development in Africa. Founding partnerships support the journal's establishment, strengthen its credibility, and contribute to a lasting platform for African scholarship.</p>
+      <span class="kicker" style="display:block;margin-bottom:1rem;color:var(--coral)">Partner on research</span>
+      <h2 style="font-size:clamp(1.9rem,3.8vw,2.6rem);margin-bottom:clamp(1rem,2vw,1.4rem);max-width:24ch">Commission the evidence you need.</h2>
+      <p style="color:var(--ink-soft);max-width:64ch;line-height:1.75">Universities, research bodies, development organisations, and government partners can co-design a study around a live programme, fund a specific piece of documentation, or commission a brief on a question that has to be answered before a decision is made. Our fifth pillar exists so that what we learn in these communities reaches the people setting policy for them.</p>
       <p style="margin-top:clamp(1.3rem,2.5vw,1.8rem)">
-        <a href="/contact?subject=ajgad-partnership" class="btn btn-coral">Get in touch &rarr;</a>
-        <a href="/ajgad" class="btn" style="margin-left:0.6rem">About the journal</a>
+        <a href="/contact?subject=research-partnership" class="btn btn-coral">Get in touch &rarr;</a>
+        <a href="/research" class="btn" style="margin-left:0.6rem">Research &amp; findings</a>
       </p>
     </div>
   </section>
@@ -102,16 +99,25 @@ const journal = (await reader.singletons.journal.read())!;
     </div>
   </section>
 
-  <!-- NUMBERS BAND -->
-  <section class="nums">
+  <!-- WHERE A PARTNERSHIP LANDS -->
+  <section class="nums nums--where">
     <div class="container">
-      <span class="kicker">Phase 1 targets &middot; Year 1</span>
+      <span class="kicker">Where a partnership lands</span>
       <div class="nums-grid">
-        <div class="cell"><span class="n">3</span><span class="l">settlements in Nairobi</span></div>
-        <div class="cell"><span class="n">5</span><span class="l">programme pillars</span></div>
-        <div class="cell"><span class="n">2</span><span class="l">mobile library units</span></div>
-        <div class="cell"><span class="n">2</span><span class="l">new books published</span></div>
+        <div class="cell">
+          <span class="n">Kenya</span>
+          <span class="l">Pastoralist and drylands communities, and the counties that serve them.</span>
+        </div>
+        <div class="cell">
+          <span class="n">Ethiopia</span>
+          <span class="l">Children in arid and semi-arid areas where provision is thinnest.</span>
+        </div>
+        <div class="cell">
+          <span class="n">South Sudan</span>
+          <span class="l">Displaced and refugee populations whose schooling has been interrupted.</span>
+        </div>
       </div>
+      <p class="nums-note">As we grow, we aim to extend our reach to more communities facing similar barriers to literacy and learning.</p>
     </div>
   </section>
 
@@ -127,12 +133,12 @@ const journal = (await reader.singletons.journal.read())!;
         </div>
         <div class="act-cell">
           <h3>Learn more</h3>
-          <p>Read the full detail of our six programme pillars and how each creates impact.</p>
+          <p>Read the full detail of our five programme pillars and how each one reaches children.</p>
           <a class="go" href="/programmes">Our programmes &rarr;</a>
         </div>
         <div class="act-cell">
           <h3>Our story</h3>
-          <p>Understand the background, the problem we're solving, and the communities we serve.</p>
+          <p>Understand why the literacy gap in these communities is structural, and how we work to close it.</p>
           <a class="go" href="/about">Our story &rarr;</a>
         </div>
       </div>

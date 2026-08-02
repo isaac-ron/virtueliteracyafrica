@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { reader, img } from '../lib/content';
+import { reader, asset } from '../lib/content';
 
 const shots = (await reader.collections.gallery.all()).sort(
   (a, b) => (a.entry.order ?? 0) - (b.entry.order ?? 0)
@@ -9,14 +9,14 @@ const shots = (await reader.collections.gallery.all()).sort(
 
 <BaseLayout
   title="Gallery — Virtue Literacy Africa"
-  description="Moments from our work across Africa's informal settlements."
+  description="Moments from our work in pastoralist, refugee, and arid and semi-arid communities across East Africa."
   currentPage="/gallery"
 >
   <section class="page-hero">
     <div class="container">
       <span class="kicker">Gallery</span>
       <h1>The work, in pictures.</h1>
-      <p>Moments from the mobile libraries, reading days, fellowships, and the communities we serve.</p>
+      <p>Moments from the reading spaces, literacy sessions, and the communities we serve.</p>
     </div>
   </section>
 
@@ -28,7 +28,7 @@ const shots = (await reader.collections.gallery.all()).sort(
         <ul class="gallery-grid">
           {shots.map((s) => (
             <li class="gallery-item">
-              {s.entry.image && <img src={img(s.entry.image, '/images/gallery/')} alt={s.entry.caption} loading="lazy" />}
+              {s.entry.image && <img src={asset(s.entry.image, '/images/gallery/')} alt={s.entry.caption} loading="lazy" />}
               {s.entry.caption && <span class="gallery-caption">{s.entry.caption}</span>}
             </li>
           ))}

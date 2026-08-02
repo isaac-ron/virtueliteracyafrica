@@ -1,9 +1,9 @@
 import { config, fields, singleton, collection } from '@keystatic/core';
 import { createElement } from 'react';
 
-// Editing surface = structured content the client can safely manage:
-// two small singletons (journal name, homepage banner) plus four collections
-// (blog posts, team, events, gallery). The page templates render these in fixed
+// Editing surface = structured content the client can safely manage: one small
+// singleton (the homepage banner) plus five collections (research outputs, blog
+// posts, team, events, gallery). The page templates render these in fixed
 // layouts, so adding entries can't break the design.
 export default config({
   // Local files while developing (npm run cms); Keystatic Cloud in production
@@ -23,45 +23,80 @@ export default config({
         }),
     },
     navigation: {
-      Site: ['journal', 'banner'],
-      Content: ['posts', 'team', 'events', 'gallery'],
+      Site: ['banner'],
+      Content: ['research', 'posts', 'team', 'events', 'gallery'],
     },
   },
   singletons: {
-    /* The one bit of fixed copy that keeps changing — edit once, updates everywhere. */
-    journal: singleton({
-      label: 'Journal name',
-      path: 'content/journal/',
-      format: { data: 'json' },
-      schema: {
-        name: fields.text({
-          label: 'Full name',
-          description: 'Updates the homepage banner, nav, footer, and every page automatically.',
-          defaultValue: 'African Journal of Governance, AI and Development',
-        }),
-        acronym: fields.text({ label: 'Acronym', defaultValue: 'AJGAD' }),
-      },
-    }),
-
-    /* The homepage announcement strip. */
+    /* The homepage announcement strip. Free text so it can carry whatever is current. */
     banner: singleton({
       label: 'Homepage banner',
       path: 'content/banner/',
       format: { data: 'json' },
       schema: {
-        show: fields.checkbox({ label: 'Show the banner', defaultValue: true }),
-        tag: fields.text({ label: 'Tag', defaultValue: 'New' }),
-        leadIn: fields.text({ label: 'Lead-in text', defaultValue: 'Introducing' }),
-        tail: fields.text({
-          label: 'Trailing text (after the journal name)',
-          defaultValue: '— our new peer-reviewed, open-access journal.',
+        show: fields.checkbox({ label: 'Show the banner', defaultValue: false }),
+        tag: fields.text({
+          label: 'Tag',
+          description: 'The small chip at the start of the strip, e.g. "New" or "Notice".',
+          defaultValue: 'New',
         }),
-        ctaLabel: fields.text({ label: 'Link label', defaultValue: 'Explore the journal →' }),
+        message: fields.text({
+          label: 'Message',
+          multiline: true,
+          description: 'One sentence. Keep it short — the strip is a single line on desktop.',
+          defaultValue: '',
+        }),
+        ctaLabel: fields.text({ label: 'Link label', defaultValue: '' }),
+        ctaHref: fields.text({
+          label: 'Link destination',
+          description: 'A path on this site, e.g. /research, or a full https:// address.',
+          defaultValue: '/research',
+        }),
       },
     }),
   },
 
   collections: {
+    /* ---------------- Research & findings ----------------
+       Standalone reports and briefs, deliberately not issues or volumes. */
+    research: collection({
+      label: 'Research & findings',
+      slugField: 'title',
+      path: 'content/research/*',
+      format: { data: 'json' },
+      columns: ['title', 'publishedDate'],
+      schema: {
+        title: fields.slug({ name: { label: 'Title' } }),
+        kind: fields.select({
+          label: 'Type',
+          options: [
+            { label: 'Report', value: 'Report' },
+            { label: 'Brief', value: 'Brief' },
+            { label: 'Case study', value: 'Case study' },
+          ],
+          defaultValue: 'Brief',
+        }),
+        publishedDate: fields.date({
+          label: 'Published date',
+          defaultValue: { kind: 'today' },
+        }),
+        summary: fields.text({
+          label: 'Summary',
+          multiline: true,
+          description: 'Two or three sentences: what the question was and what you found.',
+        }),
+        file: fields.file({
+          label: 'PDF',
+          directory: 'public/files/research',
+          publicPath: '/files/research/',
+        }),
+        link: fields.url({
+          label: 'External link',
+          description: 'Use only when the output lives elsewhere. A PDF takes priority over this.',
+        }),
+      },
+    }),
+
     /* ---------------- Blog / News ---------------- */
     posts: collection({
       label: 'Blog posts',

@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { reader, img } from '../../lib/content';
+import { reader, asset } from '../../lib/content';
 import { DocumentRenderer } from '@keystatic/core/renderer';
 
 export async function getStaticPaths() {
@@ -35,7 +35,7 @@ function fmtDate(d: string | null) {
 
     {post.coverImage && (
       <figure class="post-cover">
-        <img src={img(post.coverImage, '/images/blog/')} alt="" />
+        <img src={asset(post.coverImage, '/images/blog/')} alt="" />
       </figure>
     )}
 

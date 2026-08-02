@@ -27,26 +27,27 @@ look, because the templates render the fields in fixed layouts.
 
 **Site (singletons)**
 
-- **Journal name** (`content/journal/`): full **name** + **acronym**.
-  Single source of truth — change it once and it updates the banner, nav, footer, homepage
-  band, and every page automatically.
-- **Homepage banner** (`content/banner/`): show/hide toggle + wording.
+- **Homepage banner** (`content/banner/`): show/hide toggle, tag chip, message, and an
+  optional link. Free text, so it can carry whatever announcement is current. Off by default.
 
 **Content (collections)**
 
+- **Research & findings** (`content/research/*.json`): title, type (report / brief / case
+  study), date, summary, and either an uploaded PDF or an external link. → `/research`.
+  The page shows an "in preparation" state until the first entry exists.
 - **Blog posts** (`content/posts/*.mdoc`): title, date, author, excerpt, cover image,
   rich-text body. → `/blog` index + `/blog/<slug>` pages.
 - **Team members** (`content/team/*.json`): name, role, headshot, bio, sort order. → `/team`.
 - **Events** (`content/events/*.json`): title, date, location, image, description. → `/events`.
 - **Gallery** (`content/gallery/*.json`): caption, image, sort order. → `/gallery`.
 
-Uploaded images are written to `public/images/<collection>/` and served statically. The
-seed entries shipped here (sample posts/team/events/photos) are placeholders — replace or
-delete them in the editor.
+Uploaded images are written to `public/images/<collection>/` and PDFs to
+`public/files/research/`, both served statically. The seed entries shipped here (sample
+post, events, photos) are placeholders — replace or delete them in the editor.
 
 **Not editable (fixed in templates, by design):** all marketing prose (homepage, Our Story,
-Programmes, Get Involved, Contact, Donate, the journal page body), layout, colours, and
-design. Changing those is a developer task.
+Programmes, Research & Findings body copy, Get Involved, Contact, Donate), layout, colours,
+and design. Changing those is a developer task.
 
 ## Live editing via Keystatic Cloud
 

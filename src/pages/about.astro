@@ -1,13 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { reader } from '../lib/content';
-
-const journal = (await reader.singletons.journal.read())!;
+import WhereWeWork from '../components/WhereWeWork.astro';
 ---
 
 <BaseLayout
   title="Our Story — Virtue Literacy Africa"
-  description="Virtue Literacy Africa was founded on evidence — on the lived realities of Africa's informal settlements, and the conviction that bearing witness was not enough."
+  description="Virtue Literacy Africa advances literacy for children in pastoralist, refugee, and arid and semi-arid communities across Kenya, Ethiopia, and South Sudan."
   currentPage="/about"
 >
 
@@ -15,8 +13,8 @@ const journal = (await reader.singletons.journal.read())!;
   <section class="page-hero">
     <div class="container">
       <span class="kicker">Our Story</span>
-      <h1>Africa is a continent of extraordinary possibility.</h1>
-      <p>Its people are creative, resilient, and deeply capable. The question we were built to answer is not whether its children have what it takes &mdash; they do. It is whether the world around them has what it takes to see them, equip them, and give them the platform they deserve. Too often, the honest answer has been no. Virtue Literacy Africa exists to change that.</p>
+      <h1>A gap of access, not ability.</h1>
+      <p>Virtue Literacy Africa is dedicated to advancing literacy for children and youth in marginalised and displaced communities across Africa, currently working in Kenya, Ethiopia, and South Sudan.</p>
     </div>
   </section>
 
@@ -24,50 +22,35 @@ const journal = (await reader.singletons.journal.read())!;
   <section class="background-section">
     <div class="container reveal">
       <span class="kicker">The gap we are closing</span>
-      <h2>A gap of provision, not potential.</h2>
-      <p>Across Africa's informal settlements, children are growing up in communities where access to books is rare, where libraries do not exist, where civic education is largely absent, and where the structures that should be investing in their futures have not yet reached them.</p>
-      <p>This is not a gap of potential. It is a gap of provision &mdash; between what these children are capable of and what has been made available to them. Between the futures they could build and the tools they have been given to build with. Between the contribution they could make to their communities, their countries, and their continent, and the opportunity they have been afforded to make it.</p>
-      <p>Closing that gap &mdash; at every level, through every means available &mdash; is what Virtue Literacy Africa is for.</p>
+      <h2>Why the gap exists.</h2>
+      <p>Our work reaches pastoralist communities, refugee populations, and children in arid and semi-arid areas. These are communities that carry deep resilience and hard-won knowledge of adapting to change, yet whose children frequently face some of the widest gaps in access to schooling and literacy support.</p>
+      <p>The causes are structural rather than personal. Seasonal migration moves families before a school year ends. Displacement interrupts schooling, often more than once. Dry and unpredictable environments make attendance a question of water and distance before it is a question of willingness. And education systems, almost everywhere, are designed around populations that stay in one place.</p>
+      <p>Virtue Literacy Africa works to close this gap by meeting children where they are, rather than expecting them to fit into systems that were never built for their circumstances.</p>
     </div>
   </section>
 
-  <!-- SECTION 2 — WHAT WE WITNESSED -->
+  <!-- SECTION 2 — HOW WE WORK -->
   <section class="background-section">
     <div class="container reveal">
-      <span class="kicker">What we witnessed</span>
-      <h2>It began in Kibera.</h2>
-      <p>Our documentation work began in Kibera. Working inside one of Africa's most densely populated informal settlements, we listened, recorded, and bore witness &mdash; to the realities of daily life, to the struggles and the strengths of a community that has never lacked for resilience, and to a generation of children whose stories deserved to be told.</p>
-      <p>What we encountered made one thing undeniable: that books, knowledge, and civic empowerment are not luxuries for children in informal settlements. They are necessities. And their absence is not inevitable. It is addressable &mdash; and we had both the responsibility and the means to begin addressing it.</p>
-
-      <div class="callout">
-        <span class="callout-label">The publication</span>
-        <h3>A Place Called Kibera</h3>
-        <p>The process produced <em>A Place Called Kibera</em> &mdash; a landmark publication that gave voice to a community too often spoken about rather than spoken with. But more than a book, the work produced a mandate.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- SECTION 3 — OUR RESPONSE -->
-  <section class="background-section">
-    <div class="container reveal">
-      <span class="kicker">Our response</span>
-      <h2>One response, at two levels.</h2>
-      <p>We built Virtue Literacy Africa to respond at two levels &mdash; because the gap operates at two levels.</p>
+      <span class="kicker">How we work</span>
+      <h2>Programmes that move with the community.</h2>
+      <p>We work at the intersection of literacy and innovation, including artificial intelligence, to open new pathways for learning, opportunity, and voice for young people whose communities have often been overlooked by conventional systems.</p>
 
       <div class="ps-grid" style="margin-top:clamp(1.5rem,3vw,2.5rem)">
         <div>
-          <h3>On the ground</h3>
-          <p>At the community level, we go directly to the children. We bring mobile libraries into informal settlements; run literacy, storytelling, and civic education events where children are heard, celebrated, and equipped; and publish books that reflect African realities and nurture values, courage, and active citizenship. We run AI Learning Fellowships that turn the most determined young people into community innovators &mdash; and through Mwangaza, our offline AI programme, we put early detection and care tools into the hands of the caregivers, health workers, and teachers who serve these communities every day.</p>
+          <h3>Rooted in the community</h3>
+          <p>Community literacy programmes, mobile learning initiatives, and community reading spaces, delivered in partnership with religious institutions, families, local leaders, and the communities themselves. We build on existing trust rather than starting from scratch, and design programmes that adapt as the people we serve adapt.</p>
         </div>
         <div>
-          <h3>At the policy table</h3>
-          <p>At the level of knowledge and policy, we built {journal.name} ({journal.acronym}). The insights generated at the grassroots &mdash; about what children in informal settlements actually need, about what works and what does not &mdash; deserve a rigorous scholarly home: a platform that carries them into the research community, into policy institutions, and into the conversations that shape Africa's future at scale.</p>
+          <h3>Open to new tools</h3>
+          <p>We are embracing innovation, including artificial intelligence, to expand access to learning and equip children and youth with tools fit for the future, without losing sight of the communities we serve. That includes early developmental screening through Mwangaza AI, in places where specialist services are otherwise out of reach.</p>
         </div>
       </div>
 
       <div class="callout">
-        <span class="callout-label">One response, two scales</span>
-        <p>The programmes and the journal are not separate endeavours. They are the same response, at different scales. One reaches the child. The other works to shape the world the child is growing into.</p>
+        <span class="callout-label">Inclusion</span>
+        <h3>Undetected disability is a literacy barrier.</h3>
+        <p>Children who cannot hear, see, or process language are frequently mistaken for slow learners rather than identified and supported. In pastoralist, arid, and semi-arid communities, where specialists and screening services are often entirely out of reach, these children may never be identified at all.</p>
       </div>
     </div>
   </section>
@@ -79,107 +62,74 @@ const journal = (await reader.singletons.journal.read())!;
       <div class="vm-grid">
         <div class="vm-cell">
           <span class="vm-label">Vision</span>
-          <h3>An Africa where every child, regardless of where they were born, has access to books, knowledge, and the tools to shape their future.</h3>
+          <h3>A future where every child, regardless of geography, mobility, or circumstance, has the literacy skills and tools to shape their own opportunity and voice.</h3>
         </div>
         <div class="vm-cell">
           <span class="vm-label">Mission</span>
-          <p>To document Africa's informal settlement realities and respond with mobile libraries, literacy events, civic education, values-based books, AI learning fellowships, and rigorous academic research &mdash; nurturing children who are not only literate, but informed, empowered, and ready to lead.</p>
+          <p>To advance literacy for children and youth in marginalised and displaced communities across Africa, including pastoralist populations, refugee communities, and children in arid and semi-arid areas, by combining community-rooted programmes, research and evidence-sharing, and innovation, including artificial intelligence.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- TARGET BENEFICIARIES -->
+  <!-- VALUES -->
   <section class="beneficiaries-section reveal">
     <div class="container">
-      <span class="kicker">Who We Serve</span>
-      <h2>Target beneficiaries.</h2>
+      <span class="kicker">What guides us</span>
+      <h2>Our values.</h2>
       <ul class="beneficiaries">
         <li>
           <span class="bn">01</span>
           <div class="btext">
-            <h4>Children aged 5&ndash;17</h4>
-            <p>Children in Nairobi's informal settlements — Phase 1 focuses on Kibera, Mathare, and Korogocho.</p>
+            <h4>Dignity</h4>
+            <p>Every child deserves to be seen, valued, and given a genuine chance to learn, regardless of where or how they live.</p>
           </div>
         </li>
         <li>
           <span class="bn">02</span>
           <div class="btext">
-            <h4>Young people aged 18&ndash;28</h4>
-            <p>Particularly aspiring civic leaders and AI enthusiasts, targeted through the AI Learning Fellowships programme.</p>
+            <h4>Community</h4>
+            <p>We walk alongside families, local leaders, and institutions like churches, building on existing trust rather than starting from scratch.</p>
           </div>
         </li>
         <li>
           <span class="bn">03</span>
           <div class="btext">
-            <h4>Caregivers, parents, and community teachers</h4>
-            <p>Adults who support children's learning at home and in informal school settings, including as primary users of the Mwangaza AI tool.</p>
+            <h4>Resilience</h4>
+            <p>We draw inspiration from the communities we serve, who have long adapted to change, and we design programmes that adapt with them.</p>
           </div>
         </li>
         <li>
           <span class="bn">04</span>
           <div class="btext">
-            <h4>Persons with disabilities</h4>
-            <p>Including children and caregivers navigating accessibility barriers in education and reading materials.</p>
+            <h4>Innovation</h4>
+            <p>We embrace new tools, including artificial intelligence, to expand what is possible in literacy and learning without losing sight of culture and context.</p>
           </div>
         </li>
         <li>
           <span class="bn">05</span>
           <div class="btext">
-            <h4>Researchers, practitioners, and policymakers</h4>
-            <p>African and Africanist scholars who publish through, and draw evidence from, {journal.name} ({journal.acronym}).</p>
+            <h4>Access</h4>
+            <p>We meet children where they are, removing barriers created by distance, mobility, and systems not built with them in mind.</p>
           </div>
         </li>
       </ul>
-      <p style="color:var(--ink-soft);font-size:0.95rem;margin-top:1.2rem">Phase 1 focuses on Nairobi. Phase 2 and beyond aim to scale to other Kenyan counties and eventually across Africa.</p>
     </div>
   </section>
 
-  <!-- IMPLEMENTATION PHASES -->
-  <section class="phases-section reveal">
-    <div class="container">
-      <span class="kicker">Implementation Approach</span>
-      <h2>A phased, scalable model.</h2>
-      <table class="phases-table">
-        <thead>
-          <tr>
-            <th>Phase</th>
-            <th>Timeline</th>
-            <th>Geography</th>
-            <th>Key Deliverables</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td data-label="Phase"><span class="phase-name">Phase 1<span>Foundation</span></span></td>
-            <td data-label="Timeline">Year 1&ndash;2</td>
-            <td data-label="Geography">3 Nairobi settlements: Kibera, Mathare, Korogocho</td>
-            <td data-label="Key Deliverables">2 mobile library units; 2 new VLA books published; 3 civic education events; 1 AI fellowship cohort; Mwangaza AI pilot; {journal.acronym} inaugural issue</td>
-          </tr>
-          <tr>
-            <td data-label="Phase"><span class="phase-name">Phase 2<span>Scale</span></span></td>
-            <td data-label="Timeline">Year 3&ndash;5</td>
-            <td data-label="Geography">Additional Kenyan counties</td>
-            <td data-label="Key Deliverables">Expanded mobile library fleet; fellowship programme growth; 4 additional VLA titles; Mwangaza AI v2 with multilingual support; {journal.acronym} indexed and biannual</td>
-          </tr>
-          <tr>
-            <td data-label="Phase"><span class="phase-name">Phase 3<span>Pan-African</span></span></td>
-            <td data-label="Timeline">Year 5+</td>
-            <td data-label="Geography">Pan-African</td>
-            <td data-label="Key Deliverables">Continental AI curriculum partnership; multilingual book series; diaspora fellowship track; pan-African research network around the {journal.acronym}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
+  <!-- WHERE WE WORK -->
+  <WhereWeWork
+    kicker="Where we work"
+    heading="Reaching pastoralist, refugee, and drylands communities across East Africa."
+  />
 
   <!-- SECTION 4 — WHAT WE ARE BUILDING -->
   <section class="background-section">
     <div class="container reveal">
       <span class="kicker">What we are building</span>
-      <h2>A solvable problem, being solved.</h2>
-      <p>An Africa where every child, regardless of where they were born, has access to books, knowledge, and the tools to shape their future. An Africa where evidence from the ground informs the decisions made at the top. An Africa where the gap between potential and opportunity is not a permanent condition but a solvable problem &mdash; being solved, systematically, one community, one child, one piece of research at a time.</p>
-      <p>That is the Africa Virtue Literacy Africa is working toward &mdash; across six pillars, through one ecosystem, and with the unshakeable conviction that every child deserves to be seen, equipped, and given the chance to lead.</p>
+      <h2>Literacy is more than a skill.</h2>
+      <p>It is a foundation for dignity, opportunity, and voice. We are committed to walking alongside marginalised and displaced communities in Kenya, Ethiopia, and South Sudan, using both tradition and innovation, to make that foundation accessible to every child.</p>
+      <p>That work runs across five pillars, from the literacy programmes that reach a child in a mobile community to the evidence we put in front of the people deciding how those communities are served.</p>
       <p style="margin-top:clamp(1.5rem,3vw,2.25rem)"><a href="/team" class="btn">Meet the team &rarr;</a></p>
     </div>
   </section>
@@ -191,17 +141,17 @@ const journal = (await reader.singletons.journal.read())!;
       <div class="act-grid reveal">
         <div class="act-cell">
           <h3>Partner with us</h3>
-          <p>Financial sponsors, in-kind donors, institutional partners, and governance organisations.</p>
+          <p>Financial sponsors, in-kind donors, faith institutions, and development partners.</p>
           <a class="go" href="/get-involved">See how to get involved &rarr;</a>
         </div>
         <div class="act-cell">
-          <h3>Visit the journal</h3>
-          <p>Read, cite, submit to, or partner with the African Journal of Governance, AI and Development.</p>
-          <a class="go" href="/ajgad">Explore the {journal.acronym} &rarr;</a>
+          <h3>Read our findings</h3>
+          <p>Reports and briefs on what works in literacy, inclusive education, and AI-enabled learning.</p>
+          <a class="go" href="/research">Research &amp; findings &rarr;</a>
         </div>
         <div class="act-cell">
           <h3>Contact us</h3>
-          <p>Questions, media enquiries, or just a conversation about what we are building.</p>
+          <p>Questions, media enquiries, or an opening conversation about what we are building.</p>
           <a class="go" href="/contact">Get in touch &rarr;</a>
         </div>
       </div>

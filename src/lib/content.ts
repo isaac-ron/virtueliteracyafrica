@@ -12,11 +12,11 @@ export function paragraphs(text: string | undefined | null): string[] {
 }
 
 /**
- * Resolve a Keystatic image field to a usable URL. The reader returns the bare
- * filename; prefix the collection's public path. Guarded so an already-absolute
+ * Resolve a Keystatic image or file field to a usable URL. The reader returns the
+ * bare filename; prefix the collection's public path. Guarded so an already-absolute
  * value (e.g. from a future editor change) isn't double-prefixed.
  */
-export function img(value: string | null | undefined, prefix: string): string {
+export function asset(value: string | null | undefined, prefix: string): string {
   if (!value) return '';
   return value.startsWith('/') || value.startsWith('http') ? value : prefix + value;
 }

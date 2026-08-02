@@ -1,0 +1,121 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { reader, asset } from '../lib/content';
+
+// Newest first. Entries are added through /keystatic, not here.
+const findings = (await reader.collections.research.all()).sort((a, b) =>
+  (a.entry.publishedDate ?? '') < (b.entry.publishedDate ?? '') ? 1 : -1
+);
+
+function fmtDate(d: string | null) {
+  if (!d) return '';
+  return new Date(d).toLocaleDateString('en-GB', { month: 'long', year: 'numeric' });
+}
+---
+
+<BaseLayout
+  title="Research & Findings — Virtue Literacy Africa"
+  description="Reports and briefs from Virtue Literacy Africa on what works in literacy, inclusive education, and AI-enabled learning for displaced and underprivileged children."
+  currentPage="/research"
+>
+
+  <!-- HERO -->
+  <section class="page-hero page-hero--research">
+    <div class="container">
+      <span class="kicker">Research &amp; Evidence</span>
+      <h1>Research &amp; Findings.</h1>
+      <p>Evidence from the programmes we run, written for the people deciding how children in mobile and displaced communities are served.</p>
+    </div>
+  </section>
+
+  <!-- WHY WE PUBLISH -->
+  <section class="background-section">
+    <div class="container reveal">
+      <span class="kicker">Why we publish</span>
+      <h2>Evidence that arrives in time to be useful.</h2>
+      <p>Running literacy programmes in pastoralist, refugee, and arid and semi-arid communities produces something beyond the immediate work: a record of what was tried, what held, and what did not. Very little of that record currently reaches the people setting education policy for these same communities.</p>
+      <p>We document and publish findings from our own programmes and partnerships, generating credible evidence on what works in literacy, inclusive education, and AI-enabled learning for underprivileged and displaced children. That evidence goes directly to educators, county and national policymakers, and development partners, to inform better decisions and stronger institutions.</p>
+      <p>We publish standalone reports and briefs. The format is deliberately light, because evidence that takes a year to reach print arrives after the decision it was meant to inform.</p>
+    </div>
+  </section>
+
+  <!-- OUTPUTS -->
+  <section class="background-section">
+    <div class="container reveal">
+      <span class="kicker">Published outputs</span>
+      <h2>Reports and briefs.</h2>
+
+      {findings.length === 0 ? (
+        <div class="callout callout--coral">
+          <span class="callout-label">In preparation</span>
+          <h3>Our first outputs are being written now.</h3>
+          <p>Programmes have to run before there is anything honest to report on them. The first briefs will cover early developmental screening in communities without specialist services, and literacy retention among children whose schooling is interrupted by seasonal migration.</p>
+          <p style="margin-top:0.9rem"><a href="/contact?subject=research-partnership" style="color:var(--ink);font-weight:700;text-decoration:underline;text-decoration-color:var(--coral);text-underline-offset:3px;text-decoration-thickness:2px">Ask to be notified when the first brief is published &rarr;</a></p>
+        </div>
+      ) : (
+        <ul class="findings-list">
+          {findings.map((f) => {
+            const href = f.entry.file ? asset(f.entry.file, '/files/research/') : f.entry.link;
+            return (
+              <li>
+                <span class="findings-type">{f.entry.kind}</span>
+                <div class="findings-body">
+                  {f.entry.publishedDate && <span class="findings-date">{fmtDate(f.entry.publishedDate)}</span>}
+                  <h4>{f.entry.title}</h4>
+                  {f.entry.summary && <p>{f.entry.summary}</p>}
+                  {href && (
+                    <a class="findings-link" href={href}>
+                      Read the {f.entry.kind.toLowerCase()} &rarr;
+                    </a>
+                  )}
+                </div>
+              </li>
+            );
+          })}
+        </ul>
+      )}
+    </div>
+  </section>
+
+  <!-- FOCUS AREAS -->
+  <section class="background-section">
+    <div class="container reveal">
+      <span class="kicker">Focus areas</span>
+      <h2>Four questions we keep returning to.</h2>
+      <ul class="focus-index">
+        <li><span class="fn">01</span><span class="ft">Literacy in pastoralist, refugee, and drylands communities</span></li>
+        <li><span class="fn">02</span><span class="ft">Inclusive education and early developmental screening</span></li>
+        <li><span class="fn">03</span><span class="ft">AI-enabled learning in low-connectivity settings</span></li>
+        <li><span class="fn">04</span><span class="ft">Governance, policy, and education provision for mobile populations</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- HOW WE PUBLISH -->
+  <section class="background-section">
+    <div class="container reveal">
+      <span class="kicker">How we publish</span>
+      <h2>Open, plain, and on no one's calendar but the work's.</h2>
+      <ul class="pub-model">
+        <li><span class="pm-key">Free to read</span><span class="pm-val">No subscription, no paywall, no registration.</span></li>
+        <li><span class="pm-key">Plain language</span><span class="pm-val">Written for practitioners and policymakers, not for a review committee.</span></li>
+        <li><span class="pm-key">Published on completion</span><span class="pm-val">Findings go out when they are ready, not on a publishing schedule.</span></li>
+        <li><span class="pm-key">Drawn from practice</span><span class="pm-val">Every output comes from programmes we run or partner on directly.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- PARTNER -->
+  <section class="background-section">
+    <div class="container reveal">
+      <span class="kicker">Partner on research</span>
+      <h2>Bring a question to the work.</h2>
+      <p>Universities, research institutions, development partners, and government bodies working on education for mobile and displaced populations are welcome to collaborate. That can mean co-designing a study around a live programme, funding a specific piece of documentation, or commissioning a brief on a question you need answered before a decision is made.</p>
+      <p style="margin-top:clamp(1.3rem,2.5vw,1.8rem)">
+        <a href="/contact?subject=research-partnership" class="btn btn-coral">Get in touch &rarr;</a>
+        <a href="/programmes#research" class="btn" style="margin-left:0.6rem">See the pillar</a>
+      </p>
+    </div>
+  </section>
+
+</BaseLayout>

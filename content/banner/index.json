@@ -1,7 +1,7 @@
 {
-  "show": true,
+  "show": false,
   "tag": "New",
-  "leadIn": "Introducing",
-  "tail": "— our new peer-reviewed, open-access journal.",
-  "ctaLabel": "Explore the journal →"
+  "message": "",
+  "ctaLabel": "",
+  "ctaHref": "/research"
 }

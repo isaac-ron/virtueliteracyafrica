@@ -1,0 +1,177 @@
+---
+import { VIEW_BOX, FOCUS_SHAPES, CONTEXT_SHAPES } from '../data/mapShapes';
+
+interface Props {
+  /** Section heading. Omit to render the map without one. */
+  heading?: string;
+  kicker?: string;
+  /** Closing line under the panel. */
+  note?: string;
+}
+
+const {
+  heading = 'Kenya, Ethiopia, and South Sudan.',
+  kicker = 'Where we work',
+  note = 'As we grow, we aim to extend our reach to more communities facing similar barriers to literacy and learning.',
+} = Astro.props;
+
+// Country copy. Kept at the level the programme documentation supports: no site
+// counts, no pins, no figures VLA cannot stand behind.
+const COUNTRIES: Record<string, { blurb: string }> = {
+  KEN: {
+    blurb:
+      'Pastoralist communities and children in arid and semi-arid areas, where seasonal migration and distance keep schooling out of reach for part of the year.',
+  },
+  ETH: {
+    blurb:
+      'Arid and semi-arid areas, where dry and unpredictable environments and thin provision compound the literacy gap.',
+  },
+  SDS: {
+    blurb:
+      'Refugee and displaced populations, whose schooling has been interrupted, often more than once.',
+  },
+};
+
+// North to south, so the tab order matches the map top to bottom.
+const ORDER = ['SDS', 'ETH', 'KEN'];
+const focus = ORDER.map((iso) => FOCUS_SHAPES.find((s) => s.iso === iso)!).filter(Boolean);
+const first = focus[0].iso;
+
+const COMMUNITIES = [
+  'Pastoralist communities',
+  'Refugee populations',
+  'Arid & semi-arid areas',
+];
+---
+
+<section class="wmap reveal">
+  <div class="container">
+    {kicker && <span class="kicker">{kicker}</span>}
+    {heading && <h2 class="wmap-heading">{heading}</h2>}
+
+    <div class="wmap-grid">
+      <figure class="wmap-figure">
+        <svg
+          viewBox={VIEW_BOX}
+          class="wmap-svg"
+          role="img"
+          aria-label="Map of East Africa with Kenya, Ethiopia, and South Sudan marked."
+          data-wmap-svg
+        >
+          <g class="wmap-context" aria-hidden="true">
+            {CONTEXT_SHAPES.map((s) => <path d={s.d} />)}
+          </g>
+          <g class="wmap-focus" aria-hidden="true">
+            {focus.map((s) => (
+              <path
+                d={s.d}
+                data-wmap-shape={s.iso}
+                class:list={['wmap-country', { 'is-active': s.iso === first }]}
+              />
+            ))}
+          </g>
+          <g class="wmap-labels" aria-hidden="true">
+            {focus.map((s) => (
+              <text x={s.label![0]} y={s.label![1]} data-wmap-label={s.iso}>{s.name}</text>
+            ))}
+          </g>
+        </svg>
+      </figure>
+
+      <div class="wmap-panel">
+        <div class="wmap-tabs" role="tablist" aria-label="Countries we work in">
+          {focus.map((s) => (
+            <button
+              type="button"
+              role="tab"
+              id={`wmap-tab-${s.iso}`}
+              aria-controls={`wmap-panel-${s.iso}`}
+              aria-selected={s.iso === first ? 'true' : 'false'}
+              tabindex={s.iso === first ? 0 : -1}
+              data-wmap-tab={s.iso}
+              class="wmap-tab"
+            >
+              {s.name}
+            </button>
+          ))}
+        </div>
+
+        {focus.map((s) => (
+          <div
+            role="tabpanel"
+            id={`wmap-panel-${s.iso}`}
+            aria-labelledby={`wmap-tab-${s.iso}`}
+            data-wmap-readout={s.iso}
+            hidden={s.iso !== first}
+            tabindex="0"
+          >
+            <p class="wmap-blurb">{COUNTRIES[s.iso].blurb}</p>
+          </div>
+        ))}
+
+        <div class="wmap-communities">
+          <span class="wmap-communities-label">Across all three, we reach</span>
+          <ul>
+            {COMMUNITIES.map((c) => <li>{c}</li>)}
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    {note && <p class="wmap-note">{note}</p>}
+  </div>
+</section>
+
+<script>
+  (function () {
+    "use strict";
+    document.querySelectorAll(".wmap").forEach(function (root) {
+      var tabs = [].slice.call(root.querySelectorAll("[data-wmap-tab]"));
+      if (!tabs.length) return;
+
+      function select(iso, focusTab) {
+        tabs.forEach(function (t) {
+          var on = t.getAttribute("data-wmap-tab") === iso;
+          t.setAttribute("aria-selected", String(on));
+          t.tabIndex = on ? 0 : -1;
+          if (on && focusTab) t.focus();
+        });
+        root.querySelectorAll("[data-wmap-readout]").forEach(function (p) {
+          p.hidden = p.getAttribute("data-wmap-readout") !== iso;
+        });
+        root.querySelectorAll("[data-wmap-shape]").forEach(function (s) {
+          s.classList.toggle("is-active", s.getAttribute("data-wmap-shape") === iso);
+        });
+        root.querySelectorAll("[data-wmap-label]").forEach(function (l) {
+          l.classList.toggle("is-active", l.getAttribute("data-wmap-label") === iso);
+        });
+      }
+
+      tabs.forEach(function (tab) {
+        tab.addEventListener("click", function () {
+          select(tab.getAttribute("data-wmap-tab"), false);
+        });
+        tab.addEventListener("keydown", function (e) {
+          var i = tabs.indexOf(tab);
+          var next =
+            e.key === "ArrowRight" || e.key === "ArrowDown" ? i + 1 :
+            e.key === "ArrowLeft" || e.key === "ArrowUp" ? i - 1 :
+            e.key === "Home" ? 0 :
+            e.key === "End" ? tabs.length - 1 : -1;
+          if (next === -1) return;
+          e.preventDefault();
+          var target = tabs[(next + tabs.length) % tabs.length];
+          select(target.getAttribute("data-wmap-tab"), true);
+        });
+      });
+
+      // The map mirrors the tabs. It carries no semantics of its own, so
+      // pointer input here is a shortcut, never the only way in.
+      root.querySelectorAll("[data-wmap-shape]").forEach(function (shape) {
+        shape.addEventListener("click", function () {
+          select(shape.getAttribute("data-wmap-shape"), false);
+        });
+      });
+    });
+  })();
+</script>

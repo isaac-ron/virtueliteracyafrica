@@ -10,17 +10,17 @@ interface Props {
 
 const {
   title,
-  description = 'Virtue Literacy Africa empowers children in Africa\'s informal settlements — from mobile libraries, books, and civic education on the ground to rigorous research at the policy table.',
+  description = 'Virtue Literacy Africa advances literacy for children and youth in pastoralist, refugee, and arid and semi-arid communities across Kenya, Ethiopia, and South Sudan.',
   currentPage = '',
 } = Astro.props;
 
-const journal = (await reader.singletons.journal.read())!;
 const banner = (await reader.singletons.banner.read())!;
+const showBanner = banner.show && Boolean(banner.message?.trim());
 
 const nav = [
   { href: '/about', label: 'Our Story' },
   { href: '/programmes', label: 'Programmes' },
-  { href: '/ajgad', label: journal.acronym },
+  { href: '/research', label: 'Research' },
   { href: '/get-involved', label: 'Get Involved' },
   { href: '/contact', label: 'Contact' },
 ];
@@ -41,12 +41,14 @@ const nav = [
 </head>
 <body>
 
-  {currentPage === '/' && banner.show && (
-    <aside class="jbanner" id="jbanner" aria-label="Journal announcement">
+  {currentPage === '/' && showBanner && (
+    <aside class="jbanner" id="jbanner" aria-label="Announcement">
       <div class="jbanner-inner">
-        <span class="jbanner-tag">{banner.tag}</span>
-        <p>{banner.leadIn} <strong>{journal.name}</strong> ({journal.acronym}) {banner.tail}</p>
-        <a href="/ajgad" class="jbanner-link">{banner.ctaLabel}</a>
+        {banner.tag && <span class="jbanner-tag">{banner.tag}</span>}
+        <p>{banner.message}</p>
+        {banner.ctaLabel && banner.ctaHref && (
+          <a href={banner.ctaHref} class="jbanner-link">{banner.ctaLabel}</a>
+        )}
         <button type="button" class="jbanner-close" id="jbanner-close" aria-label="Dismiss announcement">&times;</button>
       </div>
     </aside>
@@ -56,7 +58,7 @@ const nav = [
     <nav class="nav" aria-label="Primary">
       <a href="/" class="brand" aria-label="Virtue Literacy Africa home">
         <b>Virtue Literacy Africa</b>
-        <small>Reading &middot; Civic education &middot; Rising</small>
+        <small>Kenya &middot; Ethiopia &middot; South Sudan</small>
       </a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle menu">
         <span></span><span></span><span></span>
@@ -82,14 +84,14 @@ const nav = [
       <div class="footer-top">
         <div class="footer-brand">
           <b>Virtue Literacy Africa</b>
-          <p>Documenting Africa's informal settlements and responding with mobile libraries, literacy events, civic education, values-based books, AI learning fellowships, and rigorous academic research &mdash; from the community to the policy table.</p>
+          <p>Advancing literacy for children and youth in pastoralist, refugee, and arid and semi-arid communities across Kenya, Ethiopia, and South Sudan, by combining community-rooted programmes, research and evidence-sharing, and innovation.</p>
         </div>
         <div>
           <h4>Explore</h4>
           <ul>
             <li><a href="/about">Our Story</a></li>
             <li><a href="/programmes">Programmes</a></li>
-            <li><a href="/ajgad">{journal.acronym}</a></li>
+            <li><a href="/research">Research &amp; Findings</a></li>
             <li><a href="/blog">Blog</a></li>
             <li><a href="/team">Team</a></li>
             <li><a href="/events">Events</a></li>
@@ -101,12 +103,12 @@ const nav = [
         <div>
           <h4>Programmes</h4>
           <ul>
-            <li><a href="/programmes#publishing">Documentation &amp; Publishing</a></li>
-            <li><a href="/programmes#libraries">Mobile Libraries</a></li>
-            <li><a href="/programmes#events">Events &amp; Civic Education</a></li>
-            <li><a href="/programmes#fellowships">AI Learning Fellowships</a></li>
-            <li><a href="/programmes#inclusion">Inclusive Dev &amp; Mwangaza AI</a></li>
-            <li><a href="/ajgad">{journal.acronym} &mdash; {journal.name}</a></li>
+            <li><a href="/programmes#literacy">Literacy Programmes</a></li>
+            <li><a href="/programmes#mobile-learning">Mobile &amp; Community Learning</a></li>
+            <li><a href="/programmes#innovation">Innovation &amp; AI in Education</a></li>
+            <li><a href="/programmes#innovation">Mwangaza AI</a></li>
+            <li><a href="/programmes#partnerships">Community Partnerships</a></li>
+            <li><a href="/programmes#research">Research &amp; Evidence</a></li>
           </ul>
         </div>
         <div class="newsletter">
@@ -120,7 +122,7 @@ const nav = [
         </div>
       </div>
       <div class="footer-bottom">
-        <span>© 2026 Virtue Literacy Africa. All rights reserved. Reading, writing, storytelling, civic education &amp; rising.</span>
+        <span>© 2026 Virtue Literacy Africa. All rights reserved. Literacy for children and youth in marginalised and displaced communities.</span>
         <span>Nairobi, Kenya &middot; <a href="mailto:info@virtueliteracyafrica.org" style="color:inherit">info@virtueliteracyafrica.org</a></span>
       </div>
     </div>
@@ -147,10 +149,10 @@ const nav = [
       var jb = document.getElementById("jbanner");
       var jbc = document.getElementById("jbanner-close");
       if (jb && jbc) {
-        try { if (localStorage.getItem("AJGAD-banner-dismissed") === "1") jb.hidden = true; } catch (e) {}
+        try { if (localStorage.getItem("vla-banner-dismissed") === "1") jb.hidden = true; } catch (e) {}
         jbc.addEventListener("click", function () {
           jb.hidden = true;
-          try { localStorage.setItem("AJGAD-banner-dismissed", "1"); } catch (e) {}
+          try { localStorage.setItem("vla-banner-dismissed", "1"); } catch (e) {}
         });
       }
       var reveals = document.querySelectorAll(".reveal");

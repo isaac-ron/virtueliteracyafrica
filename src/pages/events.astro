@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { reader, img } from '../lib/content';
+import { reader, asset } from '../lib/content';
 
 const events = (await reader.collections.events.all()).sort((a, b) =>
   (a.entry.date ?? '') < (b.entry.date ?? '') ? -1 : 1
@@ -14,14 +14,14 @@ function fmtDate(d: string | null) {
 
 <BaseLayout
   title="Events — Virtue Literacy Africa"
-  description="Reading days, civic education events, fellowship showcases, and journal milestones."
+  description="Reading days, storytelling circles, community learning sessions, and research launches from Virtue Literacy Africa."
   currentPage="/events"
 >
   <section class="page-hero">
     <div class="container">
       <span class="kicker">Events</span>
       <h1>Where the work happens.</h1>
-      <p>Reading days, storytelling circles, civic education events, fellowship showcases, and journal milestones.</p>
+      <p>Reading days, storytelling circles, community learning sessions, screening clinics, and research launches.</p>
     </div>
   </section>
 
@@ -34,7 +34,7 @@ function fmtDate(d: string | null) {
           {events.map((e) => (
             <li class="event-row">
               {e.entry.image && (
-                <span class="event-thumb"><img src={img(e.entry.image, '/images/events/')} alt="" loading="lazy" /></span>
+                <span class="event-thumb"><img src={asset(e.entry.image, '/images/events/')} alt="" loading="lazy" /></span>
               )}
               <span class="event-body">
                 <span class="event-date">{fmtDate(e.entry.date)}</span>
