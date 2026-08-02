@@ -408,19 +408,6 @@ h1, h2, h3 { margin: 0; font-weight: 900; line-height: 0.98; letter-spacing: -0.
 .wmap-country:hover { fill: rgba(255,255,255,0.26); stroke: #fff; }
 .wmap-country.is-active { fill: var(--accent); stroke: #fff; }
 
-.wmap-labels text {
-  fill: var(--on-ink-soft);
-  font-family: var(--font);
-  font-size: 1.15px;
-  font-weight: 800;
-  letter-spacing: 0.06px;
-  text-transform: uppercase;
-  text-anchor: middle;
-  pointer-events: none;
-  transition: fill 0.28s var(--ease);
-}
-.wmap-labels text.is-active { fill: var(--ink); }
-
 .wmap-tabs { display: flex; flex-wrap: wrap; gap: 0; border: 2px solid rgba(255,255,255,0.28); }
 .wmap-tab {
   flex: 1 1 auto;
@@ -460,10 +447,9 @@ h1, h2, h3 { margin: 0; font-weight: 900; line-height: 0.98; letter-spacing: -0.
   .wmap-tabs { flex-direction: column; }
   .wmap-tab { border-left: 0; border-top: 2px solid rgba(255,255,255,0.28); }
   .wmap-tab:first-child { border-top: 0; }
-  .wmap-labels text { font-size: 1.5px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .wmap-country, .wmap-labels text, .wmap-tab { transition: none; }
+  .wmap-country, .wmap-tab { transition: none; }
 }
 
 /* Word-led variant of the same band: three named communities instead of four figures. */

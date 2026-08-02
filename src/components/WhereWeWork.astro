@@ -70,11 +70,6 @@ const COMMUNITIES = [
               />
             ))}
           </g>
-          <g class="wmap-labels" aria-hidden="true">
-            {focus.map((s) => (
-              <text x={s.label![0]} y={s.label![1]} data-wmap-label={s.iso}>{s.name}</text>
-            ))}
-          </g>
         </svg>
       </figure>
 
@@ -141,9 +136,6 @@ const COMMUNITIES = [
         });
         root.querySelectorAll("[data-wmap-shape]").forEach(function (s) {
           s.classList.toggle("is-active", s.getAttribute("data-wmap-shape") === iso);
-        });
-        root.querySelectorAll("[data-wmap-label]").forEach(function (l) {
-          l.classList.toggle("is-active", l.getAttribute("data-wmap-label") === iso);
         });
       }
 
