@@ -340,7 +340,7 @@ h1, h2, h3 { margin: 0; font-weight: 900; line-height: 0.98; letter-spacing: -0.
 .pcell .pn { position: absolute; left: 0; top: 0; z-index: 1; background: var(--accent); color: var(--ink); font-weight: 900; font-size: 1.2rem; letter-spacing: -0.02em; padding: 0.18em 0.5em; }
 .pcell .pbody { padding: 1.1rem 1.2rem 1.3rem; display: flex; flex-direction: column; gap: 0.4rem; flex: 1; }
 .pcell .pbody h3 { font-size: 1.12rem; letter-spacing: -0.02em; }
-.pcell .pbody p { color: var(--ink-soft); font-size: 0.92rem; }
+.pcell .pbody p { color: var(--ink-soft); font-size: 1rem; line-height: 1.55; }
 .pcell.feature { grid-column: 1; grid-row: 1 / span 2; }
 .pcell.feature .ph { height: auto; flex: 1; min-height: 220px; }
 .pcell.feature .pn { font-size: 1.9rem; }
@@ -470,7 +470,7 @@ h1, h2, h3 { margin: 0; font-weight: 900; line-height: 0.98; letter-spacing: -0.
 .act-cell { padding: clamp(1.5rem, 3vw, 2.25rem); border-left: 2px solid var(--ink); display: flex; flex-direction: column; gap: 0.6rem; }
 .act-cell:first-child { border-left: 0; background: var(--accent); }
 .act-cell h3 { font-size: 1.4rem; }
-.act-cell p { color: var(--ink-soft); font-size: 0.95rem; flex: 1; }
+.act-cell p { color: var(--ink-soft); font-size: 1rem; line-height: 1.6; flex: 1; }
 .act-cell:first-child p { color: rgba(27,10,53,0.78); }
 .act-cell .go { font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; font-size: 0.82rem; color: var(--ink); }
 .act-cell .go:hover { text-decoration: underline; text-decoration-color: var(--ink); }
@@ -507,7 +507,7 @@ h1, h2, h3 { margin: 0; font-weight: 900; line-height: 0.98; letter-spacing: -0.
   margin-bottom: 0.45rem;
 }
 .callout h3 { font-size: 1.1rem; margin-bottom: 0.45rem; letter-spacing: -0.01em; }
-.callout p { color: var(--ink-soft); font-size: 0.95rem; line-height: 1.65; }
+.callout p { color: var(--ink-soft); font-size: 1rem; line-height: 1.68; }
 .callout p + p { margin-top: 0.55rem; }
 
 /* ---------- Background / story section ---------- */
@@ -574,7 +574,7 @@ h1, h2, h3 { margin: 0; font-weight: 900; line-height: 0.98; letter-spacing: -0.
   white-space: nowrap;
 }
 .beneficiaries .btext h4 { font-size: 1rem; margin-bottom: 0.25rem; }
-.beneficiaries .btext p { color: var(--ink-soft); font-size: 0.93rem; }
+.beneficiaries .btext p { color: var(--ink-soft); font-size: 1rem; line-height: 1.6; }
 
 /* ---------- Programme pillar sections (programmes page) ---------- */
 .pillar-section { padding: var(--section-pad) 0; border-bottom: 2px solid var(--ink); }
@@ -624,7 +624,7 @@ h1, h2, h3 { margin: 0; font-weight: 900; line-height: 0.98; letter-spacing: -0.
 }
 .findings-body { padding: 1.1rem 1.4rem; }
 .findings-body h4 { font-size: 1.05rem; margin-bottom: 0.3rem; }
-.findings-body p { color: var(--ink-soft); font-size: 0.93rem; line-height: 1.6; }
+.findings-body p { color: var(--ink-soft); font-size: 1rem; line-height: 1.62; }
 .findings-date { display: block; font-size: 0.72rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 0.35rem; }
 .findings-link {
   display: inline-block;
@@ -663,7 +663,7 @@ h1, h2, h3 { margin: 0; font-weight: 900; line-height: 0.98; letter-spacing: -0.
 }
 .gi-body { padding: clamp(1.1rem, 2vw, 1.6rem) clamp(1.25rem, 2.5vw, 2rem); }
 .gi-body h3 { font-size: 1.2rem; margin-bottom: 0.35rem; }
-.gi-body p { color: var(--ink-soft); font-size: 0.95rem; }
+.gi-body p { color: var(--ink-soft); font-size: 1rem; line-height: 1.6; }
 
 /* ---------- Contact page ---------- */
 .contact-section { padding: var(--section-pad) 0; }
@@ -707,17 +707,17 @@ h1, h2, h3 { margin: 0; font-weight: 900; line-height: 0.98; letter-spacing: -0.
 .footer-mark { width: auto; height: 58px; margin-bottom: 0.9rem; }
 .footer-brand b { font-weight: 900; color: #fff; font-size: 1.4rem; letter-spacing: -0.03em; text-transform: uppercase; display: block; }
 .footer-brand a.parent { color: var(--accent); font-weight: 700; font-size: 0.9rem; }
-.footer-brand p { margin-top: 0.75rem; font-size: 0.92rem; max-width: 32ch; }
+.footer-brand p { margin-top: 0.75rem; font-size: 1rem; line-height: 1.6; max-width: 34ch; }
 .footer h4 { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; color: #fff; margin: 0 0 1rem; }
 .footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.55rem; }
-.footer ul a { color: var(--on-ink-soft); font-size: 0.93rem; }
+.footer ul a { color: var(--on-ink-soft); font-size: 0.98rem; }
 .footer ul a:hover { color: #fff; }
-.newsletter p { font-size: 0.92rem; margin-bottom: 0.5rem; }
+.newsletter p { font-size: 0.98rem; margin-bottom: 0.5rem; }
 .newsletter form { display: flex; gap: 0; border: 2px solid rgba(255,255,255,0.4); }
 .newsletter input { flex: 1; min-width: 0; font: inherit; font-size: 0.92rem; padding: 0.7rem 0.9rem; border: 0; background: transparent; color: #fff; }
 .newsletter input::placeholder { color: rgba(255,255,255,0.45); }
 .newsletter button { border: 0; background: var(--accent); color: var(--ink); font-weight: 800; text-transform: uppercase; font-size: 0.78rem; letter-spacing: 0.06em; padding: 0 1.1rem; cursor: pointer; }
-.footer-bottom { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.16); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem; font-size: 0.84rem; color: rgba(255,255,255,0.45); }
+.footer-bottom { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.16); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem; font-size: 0.88rem; color: rgba(255,255,255,0.62); }
 @media (max-width: 820px) { .footer-top { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 520px) { .footer-top { grid-template-columns: 1fr; } }
 
@@ -759,7 +759,7 @@ h1, h2, h3 { margin: 0; font-weight: 900; line-height: 0.98; letter-spacing: -0.
 .give-mark { width: 18px; height: 18px; border: 2px solid var(--ink); flex-shrink: 0; background: var(--paper); }
 .give-tier:has(input:checked) .give-mark { background: var(--ink); box-shadow: inset 0 0 0 3px var(--accent); }
 .give-amt { font-weight: 900; font-size: 1.25rem; letter-spacing: -0.02em; white-space: nowrap; color: var(--ink); }
-.give-funds { color: var(--ink-soft); font-size: 0.93rem; line-height: 1.45; }
+.give-funds { color: var(--ink-soft); font-size: 0.98rem; line-height: 1.5; }
 .give-tier:has(input:checked) .give-funds { color: rgba(27, 10, 53, 0.82); }
 .give-tier--custom .give-amt { display: inline-flex; align-items: center; gap: 0.45rem; }
 .give-cur { font-weight: 900; }
@@ -820,7 +820,7 @@ h1, h2, h3 { margin: 0; font-weight: 900; line-height: 0.98; letter-spacing: -0.
 .pub-model li { display: grid; grid-template-columns: minmax(8rem, auto) 1fr; gap: 0.4rem 1.4rem; padding: 1.1rem 1.4rem; border-top: 2px solid var(--ink); align-items: baseline; }
 .pub-model li:first-child { border-top: 0; }
 .pub-model .pm-key { font-weight: 900; font-size: 1.02rem; color: var(--ink); }
-.pub-model .pm-val { color: var(--ink-soft); font-size: 0.95rem; line-height: 1.55; }
+.pub-model .pm-val { color: var(--ink-soft); font-size: 1rem; line-height: 1.6; }
 @media (max-width: 520px) { .pub-model li { grid-template-columns: 1fr; gap: 0.2rem; } }
 
 /* Callout — coral variant (research) */
@@ -839,7 +839,7 @@ h1, h2, h3 { margin: 0; font-weight: 900; line-height: 0.98; letter-spacing: -0.
 .post-meta { font-size: 0.74rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft); }
 .post-title { font-size: clamp(1.3rem, 2.6vw, 1.9rem); font-weight: 900; letter-spacing: -0.02em; line-height: 1.05; }
 .post-link:hover .post-title { text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 3px; text-decoration-thickness: 2px; }
-.post-excerpt { color: var(--ink-soft); font-size: 0.98rem; line-height: 1.6; max-width: 64ch; }
+.post-excerpt { color: var(--ink-soft); font-size: 1rem; line-height: 1.62; max-width: 64ch; }
 .post-go { margin-top: auto; padding-top: 0.4rem; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; font-size: 0.8rem; color: var(--ink); }
 @media (max-width: 620px) {
   .post-link { flex-direction: column; }
@@ -875,7 +875,7 @@ h1, h2, h3 { margin: 0; font-weight: 900; line-height: 0.98; letter-spacing: -0.
 .team-meta { padding: clamp(1rem, 2vw, 1.4rem); display: flex; flex-direction: column; gap: 0.35rem; }
 .team-meta h2 { font-size: 1.2rem; letter-spacing: -0.02em; }
 .team-role { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent-deep); }
-.team-bio { color: var(--ink-soft); font-size: 0.93rem; line-height: 1.6; }
+.team-bio { color: var(--ink-soft); font-size: 1rem; line-height: 1.62; }
 @media (max-width: 820px) { .team-grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 520px) { .team-grid { grid-template-columns: 1fr; } }
 
@@ -891,7 +891,7 @@ h1, h2, h3 { margin: 0; font-weight: 900; line-height: 0.98; letter-spacing: -0.
 .event-date { font-size: 0.74rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent-deep); }
 .event-title { font-size: clamp(1.25rem, 2.4vw, 1.7rem); letter-spacing: -0.02em; }
 .event-loc { font-size: 0.85rem; color: var(--ink-soft); font-weight: 700; }
-.event-desc { color: var(--ink-soft); font-size: 0.97rem; line-height: 1.65; max-width: 64ch; margin-top: 0.2rem; }
+.event-desc { color: var(--ink-soft); font-size: 1rem; line-height: 1.65; max-width: 64ch; margin-top: 0.2rem; }
 @media (max-width: 620px) {
   .event-row { flex-direction: column; }
   .event-thumb { flex: none; border-right: 0; border-bottom: 2px solid var(--ink); aspect-ratio: 16/9; }
@@ -963,8 +963,10 @@ html.js .reveal.in :is(.gi-list > li, .focus-index > li, .findings-list > li, .p
 /* The documentary photograph opens rather than rises: it is one wide image, and
    a wipe suits it where a 18px nudge reads as a stumble. */
 html.js .reveal.testimony { opacity: 1; transform: none; }
-html.js .testimony { clip-path: inset(0 0 100% 0); transition: clip-path 0.9s var(--ease); }
-html.js .testimony.in { clip-path: inset(0 0 0 0); }
+/* Clip the image, never the <figure>: IntersectionObserver measures the target's
+   clipped rect, so clipping the observed element zeroes its own trigger. */
+html.js .testimony img { clip-path: inset(0 0 100% 0); transition: clip-path 0.9s var(--ease), filter 0.6s var(--ease); }
+html.js .testimony.in img { clip-path: inset(0 0 0 0); }
 
 /* Map: the three countries settle in behind the neighbours. */
 html.js .wmap .wmap-country { opacity: 0; transition: opacity 0.5s var(--ease), fill 0.28s var(--ease), stroke 0.28s var(--ease); }
@@ -1028,7 +1030,7 @@ html.js .wmap.in .wmap-country:nth-child(3) { transition-delay: 0.2s, 0s, 0s; }
   html.js .reveal .pillar-bullets > li,
   html.js .reveal .vm-cell,
   html.js .wmap .wmap-country { opacity: 1; transform: none; }
-  html.js .testimony { clip-path: none; }
+  html.js .testimony img { clip-path: none; }
   .nav-links a::after { transform: scaleX(0); }
   .nav-links a:hover::after, .nav-links a[aria-current="page"]::after { transform: scaleX(1); }
   html { scroll-behavior: auto; }
