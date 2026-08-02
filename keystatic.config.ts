@@ -17,7 +17,7 @@ export default config({
       // Logo shown in the admin sidebar — the one branding lever Keystatic supports.
       mark: () =>
         createElement('img', {
-          src: '/vla-logo.png',
+          src: '/logo.svg',
           alt: 'Virtue Literacy Africa',
           style: { height: '24px', width: 'auto', objectFit: 'contain' },
         }),

@@ -146,12 +146,18 @@ h1, h2, h3 { margin: 0; font-weight: 900; line-height: 0.98; letter-spacing: -0.
 }
 .brand {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  align-items: center;
+  gap: 0.7rem;
   line-height: 1;
   padding: 0.5rem clamp(20px, 5vw, 48px);
   margin-right: auto;
   color: var(--ink);
+}
+.brand-mark { width: auto; height: 40px; flex-shrink: 0; }
+.brand-text { display: flex; flex-direction: column; justify-content: center; }
+@media (max-width: 400px) {
+  .brand { gap: 0.5rem; }
+  .brand-mark { height: 32px; }
 }
 .brand b {
   font-weight: 900;
@@ -704,6 +710,7 @@ h1, h2, h3 { margin: 0; font-weight: 900; line-height: 0.98; letter-spacing: -0.
 /* ---------- Footer ---------- */
 .footer { background: var(--ink); color: var(--on-ink-soft); padding: clamp(3rem, 6vw, 4.5rem) 0 2rem; }
 .footer-top { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1.4fr; gap: 2.5rem; }
+.footer-mark { width: auto; height: 58px; margin-bottom: 0.9rem; }
 .footer-brand b { font-weight: 900; color: #fff; font-size: 1.4rem; letter-spacing: -0.03em; text-transform: uppercase; display: block; }
 .footer-brand a.parent { color: var(--accent); font-weight: 700; font-size: 0.9rem; }
 .footer-brand p { margin-top: 0.75rem; font-size: 0.92rem; max-width: 32ch; }
