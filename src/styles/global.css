@@ -187,13 +187,7 @@ h1, h2, h3 { margin: 0; font-weight: 900; line-height: 0.98; letter-spacing: -0.
   color: var(--ink);
 }
 .nav-links a:hover,
-.nav-links a[aria-current="page"] {
-  color: var(--ink);
-  text-decoration: underline;
-  text-decoration-color: var(--accent);
-  text-underline-offset: 3px;
-  text-decoration-thickness: 2px;
-}
+.nav-links a[aria-current="page"] { color: var(--ink); }
 .donate-block {
   display: flex;
   align-items: center;
@@ -913,15 +907,129 @@ h1, h2, h3 { margin: 0; font-weight: 900; line-height: 0.98; letter-spacing: -0.
 @media (max-width: 820px) { .gallery-grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 520px) { .gallery-grid { grid-template-columns: 1fr; } }
 
-/* ---------- Motion ---------- */
+/* ---------- Motion ----------
+   Rules of the house: transform / opacity / filter / clip-path only, so nothing
+   triggers layout. Everything degrades to a visible, static page when JS is off
+   (the html.js gate) and to no movement at all under prefers-reduced-motion. */
+
 @keyframes riseIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+
+/* Page load: the hero introduces itself once, top down. */
 .hero .kicker, .hero h1, .hero .lower { animation: riseIn 0.6s var(--ease) both; }
 .hero h1 { animation-delay: 0.06s; }
 .hero .lower { animation-delay: 0.16s; }
+.hero-fig { animation: riseIn 0.75s var(--ease) 0.1s both; }
+
+/* Default scroll reveal. */
 html.js .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s var(--ease), transform 0.6s var(--ease); }
 html.js .reveal.in { opacity: 1; transform: none; }
+
+/* Lists cascade instead of arriving as one slab. Where the revealed element is
+   itself the list, it stops moving and hands the motion to its children. */
+html.js .reveal.pillar-index,
+html.js .reveal.act-grid,
+html.js .reveal.gi-list,
+html.js .reveal.pillar-bullets { opacity: 1; transform: none; }
+
+html.js .reveal .pcell,
+html.js .reveal .act-cell,
+html.js .reveal .gi-list > li,
+html.js .reveal .beneficiaries > li,
+html.js .reveal .focus-index > li,
+html.js .reveal .pub-model > li,
+html.js .reveal .findings-list > li,
+html.js .reveal .pillar-bullets > li,
+html.js .reveal .vm-cell {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.5s var(--ease), transform 0.5s var(--ease);
+}
+html.js .reveal.in .pcell,
+html.js .reveal.in .act-cell,
+html.js .reveal.in .gi-list > li,
+html.js .reveal.in .beneficiaries > li,
+html.js .reveal.in .focus-index > li,
+html.js .reveal.in .pub-model > li,
+html.js .reveal.in .findings-list > li,
+html.js .reveal.in .pillar-bullets > li,
+html.js .reveal.in .vm-cell { opacity: 1; transform: none; }
+
+html.js .reveal.in :is(.pcell, .act-cell, .vm-cell, .gi-list > li, .beneficiaries > li, .focus-index > li, .pub-model > li, .findings-list > li, .pillar-bullets > li):nth-child(2) { transition-delay: 0.06s; }
+html.js .reveal.in :is(.pcell, .act-cell, .vm-cell, .gi-list > li, .beneficiaries > li, .focus-index > li, .pub-model > li, .findings-list > li, .pillar-bullets > li):nth-child(3) { transition-delay: 0.12s; }
+html.js .reveal.in :is(.pcell, .act-cell, .gi-list > li, .beneficiaries > li, .focus-index > li, .pub-model > li, .findings-list > li, .pillar-bullets > li):nth-child(4) { transition-delay: 0.18s; }
+html.js .reveal.in :is(.pcell, .gi-list > li, .beneficiaries > li, .focus-index > li, .pub-model > li, .findings-list > li, .pillar-bullets > li):nth-child(5) { transition-delay: 0.24s; }
+html.js .reveal.in :is(.gi-list > li, .focus-index > li, .findings-list > li, .pillar-bullets > li):nth-child(n+6) { transition-delay: 0.3s; }
+
+/* The documentary photograph opens rather than rises: it is one wide image, and
+   a wipe suits it where a 18px nudge reads as a stumble. */
+html.js .reveal.testimony { opacity: 1; transform: none; }
+html.js .testimony { clip-path: inset(0 0 100% 0); transition: clip-path 0.9s var(--ease); }
+html.js .testimony.in { clip-path: inset(0 0 0 0); }
+
+/* Map: the three countries settle in behind the neighbours. */
+html.js .wmap .wmap-country { opacity: 0; transition: opacity 0.5s var(--ease), fill 0.28s var(--ease), stroke 0.28s var(--ease); }
+html.js .wmap.in .wmap-country { opacity: 1; }
+html.js .wmap.in .wmap-country:nth-child(2) { transition-delay: 0.1s, 0s, 0s; }
+html.js .wmap.in .wmap-country:nth-child(3) { transition-delay: 0.2s, 0s, 0s; }
+
+/* Navigation underline wipes in from the left rather than snapping on. */
+.nav-links a { position: relative; }
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -5px;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.24s var(--ease);
+}
+.nav-links a:hover::after,
+.nav-links a[aria-current="page"]::after { transform: scaleX(1); }
+
+/* Arrows lean toward where they are taking you. */
+.act-cell .go, .post-go, .findings-link, .jbanner-link { display: inline-block; }
+.act-cell .go, .post-go, .findings-link, .btn, .jbanner-link { transition: transform 0.2s var(--ease), background-color 0.16s var(--ease), color 0.16s var(--ease), border-color 0.16s var(--ease); }
+.act-cell .go:hover, .post-go:hover, .findings-link:hover, .jbanner-link:hover { transform: translateX(4px); }
+.btn:hover { transform: translateY(-2px); }
+.btn:active { transform: translateY(0); }
+
+/* Framed photography gains a little depth on hover, inside its own crop. */
+.pcell .ph img, .team-photo img, .gallery-item img, .post-thumb img, .event-thumb img {
+  transition: filter 0.45s var(--ease), transform 0.6s var(--ease);
+}
+.pcell:hover .ph img,
+.team-card:hover .team-photo img,
+.gallery-item:hover img,
+.post-link:hover .post-thumb img,
+.event-row:hover .event-thumb img { transform: scale(1.045); }
+
+/* Wordmark: the smallest possible acknowledgement of a hover. */
+.brand-mark { transition: transform 0.3s var(--ease); }
+.brand:hover .brand-mark { transform: scale(1.06) rotate(-2deg); }
+
 @media (prefers-reduced-motion: reduce) {
-  * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
-  html.js .reveal { opacity: 1; transform: none; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.001ms !important;
+    transition-delay: 0ms !important;
+  }
+  html.js .reveal,
+  html.js .reveal .pcell,
+  html.js .reveal .act-cell,
+  html.js .reveal .gi-list > li,
+  html.js .reveal .beneficiaries > li,
+  html.js .reveal .focus-index > li,
+  html.js .reveal .pub-model > li,
+  html.js .reveal .findings-list > li,
+  html.js .reveal .pillar-bullets > li,
+  html.js .reveal .vm-cell,
+  html.js .wmap .wmap-country { opacity: 1; transform: none; }
+  html.js .testimony { clip-path: none; }
+  .nav-links a::after { transform: scaleX(0); }
+  .nav-links a:hover::after, .nav-links a[aria-current="page"]::after { transform: scaleX(1); }
   html { scroll-behavior: auto; }
 }
