@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# The content editor is not public content.
+Disallow: /keystatic
+Disallow: /api/keystatic
+
+Sitemap: https://virtueliteracyafrica.org/sitemap-index.xml

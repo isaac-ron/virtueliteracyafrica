@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Page not found — Virtue Literacy Africa"
+  description="That page is not here. Find our story, programmes, research and contact details instead."
+>
+
+  <section class="page-hero">
+    <div class="container">
+      <span class="kicker">Error 404</span>
+      <h1>That page is not here.</h1>
+      <p>The address may have a typo, or the page may have moved. If you followed a link to our journal, that work now sits under Research &amp; Findings. Everything below is a good place to pick up from.</p>
+    </div>
+  </section>
+
+  <section class="act">
+    <div class="container">
+      <h2>Try one of these.</h2>
+      <div class="act-grid reveal">
+        <div class="act-cell">
+          <h3>Our story</h3>
+          <p>Who we are, the gap we are closing, and the communities we work in.</p>
+          <a class="go" href="/about">Read our story &rarr;</a>
+        </div>
+        <div class="act-cell">
+          <h3>Programmes</h3>
+          <p>The five pillars, from literacy programmes to Mwangaza AI screening.</p>
+          <a class="go" href="/programmes">See our programmes &rarr;</a>
+        </div>
+        <div class="act-cell">
+          <h3>Research &amp; findings</h3>
+          <p>Reports and briefs on what works in literacy and inclusive education.</p>
+          <a class="go" href="/research">Read our findings &rarr;</a>
+        </div>
+      </div>
+      <p style="margin-top:clamp(1.5rem,3vw,2.25rem)">
+        <a href="/" class="btn btn-accent">Back to the homepage</a>
+        <a href="/contact" class="btn" style="margin-left:0.6rem">Tell us what broke</a>
+      </p>
+    </div>
+  </section>
+
+</BaseLayout>

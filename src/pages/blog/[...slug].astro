@@ -23,6 +23,8 @@ function fmtDate(d: string | null) {
   title={`${post.title} — Virtue Literacy Africa`}
   description={post.excerpt || post.title}
   currentPage="/blog"
+  shareType="article"
+  shareImage={post.coverImage ? asset(post.coverImage, '/images/blog/') : undefined}
 >
   <article class="post">
     <section class="page-hero">
